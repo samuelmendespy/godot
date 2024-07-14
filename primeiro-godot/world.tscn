@@ -1,14 +1,45 @@
 [gd_scene load_steps=3 format=3 uid="uid://be003egjlhsdv"]
 
 [ext_resource type="Texture2D" uid="uid://cukbtd7obijrx" path="res://icon.svg" id="1_q3xla"]
-[ext_resource type="Script" path="res://Sprite2D.gd" id="2_brxon"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="2_nao7l"]
 
 [node name="World" type="Node2D"]
 position = Vector2(39, 45)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Ground" type="ColorRect" parent="."]
+offset_right = 1018.0
+offset_bottom = 555.0
+color = Color(0.724717, 0.944843, 0.742374, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(139, 81)
 texture = ExtResource("1_q3xla")
-script = ExtResource("2_brxon")
+script = ExtResource("2_nao7l")
+
+[node name="Tree" type="ColorRect" parent="."]
+offset_left = 92.0
+offset_top = 242.0
+offset_right = 152.0
+offset_bottom = 381.0
+color = Color(0.218107, 0.58849, 0.369672, 1)
+
+[node name="Tree2" type="ColorRect" parent="."]
+offset_left = 318.0
+offset_top = 246.0
+offset_right = 378.0
+offset_bottom = 385.0
+color = Color(0.218107, 0.58849, 0.369672, 1)
+
+[node name="Tree3" type="ColorRect" parent="."]
+offset_left = 478.0
+offset_top = 248.0
+offset_right = 538.0
+offset_bottom = 387.0
+color = Color(0.218107, 0.58849, 0.369672, 1)
+
+[node name="River" type="ColorRect" parent="."]
+offset_top = 460.0
+offset_right = 1009.0
+offset_bottom = 517.0
+rotation = 0.0283049
+color = Color(0.235369, 0.617251, 1, 1)
