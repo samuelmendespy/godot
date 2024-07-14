@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://r20ulm4s3jrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mol3r"]
+size = Vector2(99.5, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3do"]
+size = Vector2(138, 94)
+
+[node name="Stage" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1149.0
+offset_bottom = 634.0
+color = Color(0.705481, 0.862233, 0.601065, 1)
+
+[node name="Platform" type="ColorRect" parent="."]
+offset_left = 100.0
+offset_top = 452.0
+offset_right = 901.0
+offset_bottom = 531.0
+color = Color(0.337218, 0.233616, 0.159467, 1)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(329.25, 221.5)
+shape = SubResource("RectangleShape2D_mol3r")
+
+[node name="Object" type="ColorRect" parent="RigidBody2D/CollisionShape2D"]
+offset_left = -45.25
+offset_top = -42.5
+offset_right = 43.75
+offset_bottom = 45.5
+color = Color(0.88059, 0.788154, 0.251089, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(390, 114)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(32, 268)
+shape = SubResource("RectangleShape2D_lh3do")
+
+[node name="Block" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -51.0
+offset_top = -40.0
+offset_right = 38.0
+offset_bottom = 48.0
+color = Color(0.392434, 0.2031, 0.0429465, 1)
