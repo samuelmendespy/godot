@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvxhpmac1lyri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a51w0"]
+size = Vector2(210, 71)
+
+[node name="platform-3-tiles" type="Node2D"]
+position = Vector2(679, 392)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(121, 47.5)
+shape = SubResource("RectangleShape2D_a51w0")
+
+[node name="PlatformIndustrial002" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(-69, -0.5)
+
+[node name="PlatformIndustrial003" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(0, -0.5)
+
+[node name="PlatformIndustrial004" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(70, -0.5)
