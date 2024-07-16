@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://r20ulm4s3jrw"]
+[gd_scene load_steps=5 format=3 uid="uid://r20ulm4s3jrw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mol3r"]
-size = Vector2(99.5, 99)
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_l1pvu"]
+[ext_resource type="PackedScene" uid="uid://cybopffkbtb7e" path="res://objects/box_bouncybox_2d.tscn" id="2_cqrps"]
+[ext_resource type="PackedScene" uid="uid://dcgh44uhgky5t" path="res://objects/box_regular_2d.tscn" id="2_ynsii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3do"]
-size = Vector2(138, 94)
+size = Vector2(1135.75, 94)
 
 [node name="Stage" type="Node2D"]
 
@@ -13,36 +14,32 @@ offset_right = 1149.0
 offset_bottom = 634.0
 color = Color(0.705481, 0.862233, 0.601065, 1)
 
-[node name="Platform" type="ColorRect" parent="."]
-offset_left = 100.0
-offset_top = 452.0
-offset_right = 901.0
-offset_bottom = 531.0
-color = Color(0.337218, 0.233616, 0.159467, 1)
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(329.25, 221.5)
-shape = SubResource("RectangleShape2D_mol3r")
-
-[node name="Object" type="ColorRect" parent="RigidBody2D/CollisionShape2D"]
-offset_left = -45.25
-offset_top = -42.5
-offset_right = 43.75
-offset_bottom = 45.5
-color = Color(0.88059, 0.788154, 0.251089, 1)
+[node name="GameManager" type="Node" parent="Background"]
+script = ExtResource("1_l1pvu")
+object_templates = Array[PackedScene]([ExtResource("2_cqrps"), ExtResource("2_ynsii")])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(390, 114)
+position = Vector2(-13, 433)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(32, 268)
+position = Vector2(587.125, 51)
 shape = SubResource("RectangleShape2D_lh3do")
 
-[node name="Block" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
-offset_left = -51.0
-offset_top = -40.0
-offset_right = 38.0
-offset_bottom = 48.0
+[node name="Platform" type="ColorRect" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -564.0
+offset_top = -43.0
+offset_right = 563.0
+offset_bottom = 42.0
 color = Color(0.392434, 0.2031, 0.0429465, 1)
+
+[node name="box_regular_2d2" parent="." instance=ExtResource("2_ynsii")]
+position = Vector2(245, 228)
+
+[node name="box_bouncy_2d" parent="." instance=ExtResource("2_cqrps")]
+position = Vector2(796, 156)
+
+[node name="box_regular_2d3" parent="." instance=ExtResource("2_ynsii")]
+position = Vector2(564, 173)
+
+[node name="box_bouncy_2d2" parent="." instance=ExtResource("2_cqrps")]
+position = Vector2(432, 225)

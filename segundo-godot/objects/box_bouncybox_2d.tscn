@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cybopffkbtb7e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j6exp"]
+bounce = 0.71
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mol3r"]
+size = Vector2(91, 89.25)
+
+[node name="box_bouncy_2d" type="RigidBody2D"]
+position = Vector2(460, 211)
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_j6exp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(69, 60.375)
+shape = SubResource("RectangleShape2D_mol3r")
+
+[node name="Block" type="ColorRect" parent="CollisionShape2D"]
+offset_left = -44.0
+offset_top = -44.0
+offset_right = 45.0
+offset_bottom = 44.0
+color = Color(0.321569, 0.764706, 0.929412, 1)
+metadata/_edit_use_anchors_ = true
