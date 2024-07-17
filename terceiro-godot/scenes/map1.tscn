@@ -1,43 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnai36p3jh8dc"]
+[gd_scene load_steps=5 format=3 uid="uid://dnai36p3jh8dc"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_55dcl"]
 [ext_resource type="Texture2D" uid="uid://bmhgjhr7a85e1" path="res://addons/kenney_jumper-pack/PNG/Enemies/flyMan_fly.png" id="1_a2d7m"]
 [ext_resource type="TileSet" uid="uid://l60kn54ujpn8" path="res://addons/tileset/map1_tile_set.tres" id="1_ty5lw"]
-[ext_resource type="Texture2D" uid="uid://r0rxgrvtie3" path="res://addons/kenney_jumper-pack/PNG/Players/bunny1_stand.png" id="1_waare"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvj7v"]
-size = Vector2(85, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unquu"]
-size = Vector2(101, 106)
+size = Vector2(66, 74)
 
 [node name="Map1" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(424, 204)
+motion_mode = 1
 script = ExtResource("1_55dcl")
+speed = 5.0
+lerp_factor = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-537, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-536, -32.25)
-shape = SubResource("RectangleShape2D_xvj7v")
-
-[node name="Bunny1Stand" type="Sprite2D" parent="Player"]
-position = Vector2(-532.5, -45.75)
-scale = Vector2(0.741667, 0.519901)
-texture = ExtResource("1_waare")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(606, 190)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(23.5, 36)
+position = Vector2(-557, -151)
 shape = SubResource("RectangleShape2D_unquu")
 
-[node name="FlyManFly" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(24, 18)
+[node name="Sprite" type="Sprite2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-557, -161.492)
+scale = Vector2(0.704918, 0.704918)
 texture = ExtResource("1_a2d7m")
 
 [node name="TileMap" type="TileMap" parent="."]
