@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4f1kgq7rpx2b"]
+
+[ext_resource type="Texture2D" uid="uid://c63tyb07sohe7" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Attack.png" id="1_ovolv"]
+[ext_resource type="Texture2D" uid="uid://b0fr2j5lhsoea" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Dead.png" id="2_3fjuy"]
+[ext_resource type="Texture2D" uid="uid://dmxvh25r8hdmy" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Idle.png" id="3_vyhvi"]
+[ext_resource type="Texture2D" uid="uid://t8yg6wlnbgk3" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Item.png" id="4_05i7e"]
+[ext_resource type="Texture2D" uid="uid://clqbldm034x7m" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Jump.png" id="5_0b0n0"]
+[ext_resource type="Texture2D" uid="uid://jebna8av3b4l" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Special1.png" id="6_d1pbh"]
+[ext_resource type="Texture2D" uid="uid://pod5cnhr44nm" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Special2.png" id="7_shw5s"]
+[ext_resource type="Texture2D" uid="uid://cshk5bvu4bh7o" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Walk.png" id="8_yoffe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hm4h"]
+font_size = 10
+
+[node name="TestProtagonist" type="Node2D"]
+
+[node name="ninja" type="Node2D" parent="."]
+position = Vector2(287, 92)
+scale = Vector2(2, 2)
+
+[node name="Attack" type="Sprite2D" parent="ninja"]
+position = Vector2(0, 109.5)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ovolv")
+
+[node name="Dead" type="Sprite2D" parent="ninja"]
+position = Vector2(43, -23)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3fjuy")
+
+[node name="Idle" type="Sprite2D" parent="ninja"]
+position = Vector2(4, 13)
+scale = Vector2(2, 2)
+texture = ExtResource("3_vyhvi")
+
+[node name="Item" type="Sprite2D" parent="ninja"]
+position = Vector2(50, 225.5)
+scale = Vector2(2, 2)
+texture = ExtResource("4_05i7e")
+
+[node name="Jump" type="Sprite2D" parent="ninja"]
+position = Vector2(1.5, 58.5)
+scale = Vector2(2, 2)
+texture = ExtResource("5_0b0n0")
+
+[node name="Special1" type="Sprite2D" parent="ninja"]
+position = Vector2(44, 186.5)
+scale = Vector2(2, 2)
+texture = ExtResource("6_d1pbh")
+
+[node name="Special2" type="Sprite2D" parent="ninja"]
+position = Vector2(48, 147.5)
+scale = Vector2(2, 2)
+texture = ExtResource("7_shw5s")
+
+[node name="Walk" type="Sprite2D" parent="ninja"]
+position = Vector2(291.5, 45.5002)
+scale = Vector2(1.98438, 1.98438)
+texture = ExtResource("8_yoffe")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1027.0
+offset_top = 126.0
+offset_right = 1066.0
+offset_bottom = 140.0
+scale = Vector2(4.8, 4.8)
+text = "Walk
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1024.0
+offset_top = 261.0
+offset_right = 1063.0
+offset_bottom = 284.0
+scale = Vector2(4.8, 4.8)
+text = "Walk
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1024.0
+offset_top = 64.0
+offset_right = 1063.0
+offset_bottom = 78.0
+scale = Vector2(4.8, 4.8)
+text = "Idle
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 1026.0
+offset_top = 193.0
+offset_right = 1065.0
+offset_bottom = 216.0
+scale = Vector2(4.8, 4.8)
+text = "Idle
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 445.0
+offset_top = 83.0
+offset_right = 484.0
+offset_bottom = 106.0
+scale = Vector2(4.8, 4.8)
+text = "Idle
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 438.0
+offset_top = 178.0
+offset_right = 477.0
+offset_bottom = 201.0
+scale = Vector2(4.8, 4.8)
+text = "Jump"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 438.0
+offset_top = 276.0
+offset_right = 477.0
+offset_bottom = 299.0
+scale = Vector2(4.8, 4.8)
+text = "Attack"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 437.0
+offset_top = 350.0
+offset_right = 476.0
+offset_bottom = 364.0
+scale = Vector2(4.8, 4.8)
+text = "Special
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 438.0
+offset_top = 433.0
+offset_right = 477.0
+offset_bottom = 447.0
+scale = Vector2(4.8, 4.8)
+text = "Special
+"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label11" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 510.0
+offset_right = 480.0
+offset_bottom = 524.0
+scale = Vector2(4.8, 4.8)
+text = "Open"
+label_settings = SubResource("LabelSettings_1hm4h")
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 24.0
+offset_right = 497.0
+offset_bottom = 47.0
+scale = Vector2(4.8, 4.8)
+text = "KO"
+label_settings = SubResource("LabelSettings_1hm4h")
