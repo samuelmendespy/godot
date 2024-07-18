@@ -13,6 +13,9 @@ var is_attacking : bool = false
 var hit_cooldown : float = 0.0
 
 func _process(delta):
+	# Inject player position on GameManager
+	GameManager.player_position = position
+	
 	# Read player input
 	read_input()
 	

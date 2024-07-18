@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5c5mu2f2cfl4"]
+[gd_scene load_steps=13 format=3 uid="uid://5c5mu2f2cfl4"]
 
 [ext_resource type="Texture2D" uid="uid://c5cj3dhappx2a" path="res://addons/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="1_vtj7n"]
 [ext_resource type="Texture2D" uid="uid://d25ygs8ooftan" path="res://addons/Tiny Swords (Update 010)/Factions/Goblins/Troops/TNT/Blue/TNT_Blue.png" id="2_f4sfm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://jebna8av3b4l" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Special1.png" id="9_he55m"]
 [ext_resource type="Texture2D" uid="uid://pod5cnhr44nm" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Special2.png" id="10_3eg65"]
 [ext_resource type="Texture2D" uid="uid://cshk5bvu4bh7o" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SeparateAnim/Walk.png" id="11_uauy0"]
+[ext_resource type="Texture2D" uid="uid://c3vmxwjeoqvp0" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="12_of5ts"]
 
 [node name="char_moves" type="Node2D"]
 
@@ -73,3 +74,7 @@ texture = ExtResource("11_uauy0")
 [node name="TorchPurple" type="Sprite2D" parent="goblin"]
 position = Vector2(608, 354)
 texture = ExtResource("1_vtj7n")
+
+[node name="PawnRed" type="Sprite2D" parent="."]
+position = Vector2(1930, 253)
+texture = ExtResource("12_of5ts")
