@@ -1166,3 +1166,4 @@ position = Vector2(799, 328)
 
 [node name="Pawn" parent="." instance=ExtResource("7_xlhu8")]
 position = Vector2(134, 169)
+speed = 1.0
