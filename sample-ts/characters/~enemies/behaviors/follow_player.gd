@@ -1,19 +1,25 @@
-extends CharacterBody2D
+extends Node
 
 @export var speed: float = 1.00
 
-@onready var sprite_cpu = $AnimatedSprite2D
+var enemy: Enemy
+var sprite_cpu: AnimatedSprite2D
 
+func _ready():
+	# Assign parent as enemy
+	enemy = get_parent()
+	sprite_cpu = enemy.get_node("AnimatedSprite2D")
+	
 
 func _physics_process(delta):
 	
 # Retrieve GameManger value of player_position
 	var player_position = GameManager.player_position
 
-	var difference = player_position - position
+	var difference = player_position - enemy.position
 	var input_vector = difference.normalized()
-	velocity = input_vector * speed * 100.0
-	move_and_slide()
+	enemy.velocity = input_vector * speed * 100.0
+	enemy.move_and_slide()
 
 # Game logic to rotate sprite, change sprite sense
 	if input_vector.x > 0:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b07bs023hdmf"]
 
-[ext_resource type="Script" path="res://characters/player/player_sprite2d.gd" id="1_fdmgj"]
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_fdmgj"]
 [ext_resource type="Texture2D" uid="uid://d0li2yyb4ttnx" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="2_tj06y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pas5"]

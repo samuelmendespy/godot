@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://bv6hojdbbg034"]
+[gd_scene load_steps=30 format=3 uid="uid://bv6hojdbbg034"]
 
+[ext_resource type="Script" path="res://characters/~enemies/enemy.gd" id="1_2gcj3"]
 [ext_resource type="Texture2D" uid="uid://c3vmxwjeoqvp0" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_aaawj"]
 [ext_resource type="Script" path="res://characters/~enemies/behaviors/follow_player.gd" id="1_vwmtu"]
 
@@ -198,7 +199,7 @@ animations = [{
 size = Vector2(42, 57)
 
 [node name="Pawn" type="CharacterBody2D"]
-script = ExtResource("1_vwmtu")
+script = ExtResource("1_2gcj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -211,3 +212,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -27.5)
 shape = SubResource("RectangleShape2D_5kk8n")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("1_vwmtu")
