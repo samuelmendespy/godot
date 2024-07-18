@@ -10,6 +10,14 @@ func damage(amount: int):
 	health -= amount
 	print("Enemy received damage:", amount, "Health points:", health)
 	
+	# Colorize on damage
+	modulate = Color.FIREBRICK
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	
+	
 	# Check health status
 	if health <= 0:
 		trigger_extinction()
