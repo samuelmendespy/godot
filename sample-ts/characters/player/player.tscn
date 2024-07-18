@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b07bs023hdmf"]
+[gd_scene load_steps=21 format=3 uid="uid://b07bs023hdmf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_fdmgj"]
 [ext_resource type="Texture2D" uid="uid://d0li2yyb4ttnx" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="2_tj06y"]
@@ -35,6 +35,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 4), Vector2i(3, 5), Vector2i(3, 5), Vector2i(3, 4), Vector2i(3, 4), Vector2i(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage_to_enemies"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_f4j7h"]
@@ -269,6 +283,9 @@ _data = {
 "walk_up": SubResource("Animation_ce2m5")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jn7x"]
+size = Vector2(131.5, 20)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(144, 192)
 script = ExtResource("1_fdmgj")
@@ -291,3 +308,9 @@ libraries = {
 "": SubResource("AnimationLibrary_62cll")
 }
 autoplay = "idle"
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-2.75, -27)
+shape = SubResource("RectangleShape2D_8jn7x")

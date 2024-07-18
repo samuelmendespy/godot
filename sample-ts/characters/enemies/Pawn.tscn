@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://bv6hojdbbg034"]
+[gd_scene load_steps=31 format=3 uid="uid://bv6hojdbbg034"]
 
-[ext_resource type="Script" path="res://characters/~enemies/enemy.gd" id="1_2gcj3"]
+[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_2gcj3"]
 [ext_resource type="Texture2D" uid="uid://c3vmxwjeoqvp0" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_aaawj"]
-[ext_resource type="Script" path="res://characters/~enemies/behaviors/follow_player.gd" id="1_vwmtu"]
+[ext_resource type="Script" path="res://characters/enemies/behaviors/follow_player.gd" id="1_vwmtu"]
+[ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_phqfo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in76f"]
 atlas = ExtResource("1_aaawj")
@@ -198,8 +199,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kk8n"]
 size = Vector2(42, 57)
 
-[node name="Pawn" type="CharacterBody2D"]
+[node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_2gcj3")
+extinction_scene = ExtResource("2_phqfo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

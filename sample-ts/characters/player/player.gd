@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
-@onready var sprite: Sprite2D = $Sprite2D
-
-@onready var animation_player:AnimationPlayer = $AnimationPlayer
 @export var speed: float = 7
+@export var base_damage: int = 1
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var hit_box: Area2D = $HitBox
+
 
 var input_vector : Vector2 = Vector2(0, 0)
 var isrunning : bool = false
@@ -97,3 +100,27 @@ func protagonist_attack():
 	 
 	# Active attack flag
 	is_attacking = true
+
+	
+	
+	
+	
+func deal_damage_to_enemies():
+	# Detect enemies in contact with the hit box
+	var creatures = hit_box.get_overlapping_bodies()
+	for creature in creatures:
+		if creature.is_in_group("enemies"):
+			var enemy: Enemy = creature
+			
+			var direction_to_enemy = (enemy.position - position).normalized()
+			var attack_direction : Vector2
+			if sprite.flip_h:
+				attack_direction = Vector2.LEFT
+			else:
+				attack_direction = Vector2.RIGHT
+			var dot_product = direction_to_enemy.dot(attack_direction)
+			print("Dot: ", dot_product)
+			#
+			# Send damage to the enemy
+			enemy.damage(base_damage)
+ 
