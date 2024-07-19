@@ -1,8 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuqmxxlvsij0v"]
+[gd_scene load_steps=13 format=3 uid="uid://dryr0ge1dfelf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cfx58"]
+[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_rtl0k"]
+[ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_gell6"]
+[ext_resource type="Texture2D" uid="uid://cujx5ow8iwuls" path="res://addons/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_p0irf"]
+[ext_resource type="Script" path="res://characters/enemies/behaviors/follow_player.gd" id="4_kq7dn"]
 
-[node name="Goblin" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p63fc"]
+atlas = ExtResource("3_p0irf")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xe20"]
+atlas = ExtResource("3_p0irf")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smnxw"]
+atlas = ExtResource("3_p0irf")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr7fk"]
+atlas = ExtResource("3_p0irf")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq01i"]
+atlas = ExtResource("3_p0irf")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxv1l"]
+atlas = ExtResource("3_p0irf")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03vkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p63fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xe20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smnxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr7fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq01i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxv1l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kk8n"]
+size = Vector2(153, 178)
+
+[node name="Goblin" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_rtl0k")
+extinction_scene = ExtResource("2_gell6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3, -97)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_03vkm")
+autoplay = "default"
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cfx58")
+position = Vector2(-10.5, -88)
+shape = SubResource("RectangleShape2D_5kk8n")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("4_kq7dn")
+speed = 0.3

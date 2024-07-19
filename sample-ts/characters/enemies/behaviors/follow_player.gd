@@ -29,9 +29,10 @@ func _physics_process(delta):
 	var input_vector = difference.normalized()
 	enemy.velocity = input_vector * speed * 200.0
 	enemy.move_and_slide()
-	print("Difference", difference)
-	print("Input Vector", input_vector)
-	print(" === ")
+	# TODO: FIX MOB ATTACHED TO PLAYER WHILE PLAYER IS UP AND IN CONTACT WITH THE MOB
+	# print("Difference", difference)
+	# print("Input Vector", input_vector)
+	# print(" === ")
 	
 # Game logic to rotate sprite, change sprite sense
 	if input_vector.x > 0:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://b07bs023hdmf"]
+[gd_scene load_steps=22 format=3 uid="uid://b07bs023hdmf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_fdmgj"]
-[ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_npxy2"]
 [ext_resource type="Texture2D" uid="uid://d0li2yyb4ttnx" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="2_tj06y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pas5"]
@@ -288,12 +287,12 @@ _data = {
 size = Vector2(131.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4tt7"]
-size = Vector2(108, 93)
+size = Vector2(80, 73)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(144, 192)
 script = ExtResource("1_fdmgj")
-extinction_scene = ExtResource("2_npxy2")
+health = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -320,9 +319,9 @@ autoplay = "idle"
 position = Vector2(-2.75, -27)
 shape = SubResource("RectangleShape2D_8jn7x")
 
-[node name="VulnerableHitBox" type="Area2D" parent="."]
+[node name="CharHitBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VulnerableHitBox"]
-position = Vector2(-1, -46.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharHitBox"]
+position = Vector2(0, -38.5)
 shape = SubResource("RectangleShape2D_i4tt7")
 debug_color = Color(0.930737, 0.134743, 0.562206, 0.42)
