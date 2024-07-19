@@ -2,10 +2,15 @@ class_name Enemy
 extends Node2D
 
 
+@export var health: int = 10
 @export var extinction_scene: PackedScene
 
-@export var health: int = 10
+var damage_digit_prefab: PackedScene
+@onready var damage_position_marker = $Marker2D
 
+
+func _ready():
+	damage_digit_prefab = preload("res://effects/DamageDigits.tscn")
 func damage(amount: int):
 	health -= amount
 	print("Enemy received damage:", amount, "Health points:", health)
@@ -17,6 +22,14 @@ func damage(amount: int):
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 	
+	# Display DamageDigits
+	var damage_display = damage_digit_prefab.instantiate()
+	damage_display.value = amount
+	if damage_position_marker:
+		damage_display.global_position = damage_position_marker.global_position
+	else:
+		damage_display.global_position = global_position
+	get_parent().add_child(damage_display)
 	
 	# Check health status
 	if health <= 0:

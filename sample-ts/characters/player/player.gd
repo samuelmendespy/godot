@@ -171,6 +171,7 @@ func damage(amount: int):
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 	
+	# Display DamageDigits
 	
 	# Check health status
 	if health <= 0:

@@ -77,3 +77,5 @@ shape = SubResource("RectangleShape2D_5kk8n")
 [node name="FollowPlayer" type="Node" parent="."]
 script = ExtResource("4_kq7dn")
 speed = 0.3
+
+[node name="Marker2D" type="Marker2D" parent="."]

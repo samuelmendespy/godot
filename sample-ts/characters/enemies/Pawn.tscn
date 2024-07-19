@@ -201,8 +201,8 @@ size = Vector2(42, 57)
 
 [node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_2gcj3")
-extinction_scene = ExtResource("2_phqfo")
 health = 5
+extinction_scene = ExtResource("2_phqfo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -219,3 +219,6 @@ shape = SubResource("RectangleShape2D_5kk8n")
 [node name="FollowPlayer" type="Node" parent="."]
 script = ExtResource("1_vwmtu")
 speed = 0.4
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-2, -64)
