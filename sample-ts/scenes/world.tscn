@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bx62dyc7e10o4"]
+[gd_scene load_steps=13 format=3 uid="uid://bx62dyc7e10o4"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_3akcv"]
 [ext_resource type="Texture2D" uid="uid://boc38pjbb4stq" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_6n66r"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://da5bn21nj7lqp" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="3_hkffj"]
 [ext_resource type="Texture2D" uid="uid://ds31twyk6fs12" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloorB.png" id="4_gmddm"]
 [ext_resource type="PackedScene" uid="uid://b07bs023hdmf" path="res://characters/player/player.tscn" id="6_qn1qp"]
-[ext_resource type="PackedScene" uid="uid://bv6hojdbbg034" path="res://characters/enemies/Pawn.tscn" id="7_xlhu8"]
-[ext_resource type="PackedScene" uid="uid://dryr0ge1dfelf" path="res://characters/enemies/Goblin.tscn" id="8_5mb33"]
-[ext_resource type="PackedScene" uid="uid://d1o8h28jfiuie" path="res://characters/enemies/Sheep.tscn" id="9_3yluk"]
+[ext_resource type="PackedScene" uid="uid://dc2c5lrd73ckb" path="res://effects/Meat.tscn" id="10_kxjy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ola8a"]
 texture = ExtResource("1_6n66r")
@@ -1166,20 +1164,8 @@ layer_0/tile_data = PackedInt32Array(1, 65538, 7, 131072, 2, 8, 196608, 2, 8, 26
 [node name="Player" parent="." instance=ExtResource("6_qn1qp")]
 position = Vector2(799, 328)
 
-[node name="Pawn" parent="." instance=ExtResource("7_xlhu8")]
-position = Vector2(134, 169)
+[node name="Meat" parent="." instance=ExtResource("10_kxjy8")]
+position = Vector2(619, 357)
 
-[node name="Pawn2" parent="." instance=ExtResource("7_xlhu8")]
-position = Vector2(387, 438)
-
-[node name="Pawn3" parent="." instance=ExtResource("7_xlhu8")]
-position = Vector2(333, 272)
-
-[node name="Pawn4" parent="." instance=ExtResource("7_xlhu8")]
-position = Vector2(505, 299)
-
-[node name="Goblin" parent="." instance=ExtResource("8_5mb33")]
-position = Vector2(125, 350)
-
-[node name="Sheep" parent="." instance=ExtResource("9_3yluk")]
-position = Vector2(594, 136)
+[node name="Meat2" parent="." instance=ExtResource("10_kxjy8")]
+position = Vector2(932, 38)

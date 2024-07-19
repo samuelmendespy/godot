@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b07bs023hdmf"]
+[gd_scene load_steps=24 format=3 uid="uid://b07bs023hdmf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_fdmgj"]
 [ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_npxy2"]
@@ -290,7 +290,16 @@ size = Vector2(131.5, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4tt7"]
 size = Vector2(108, 93)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mupr"]
+bg_color = Color(0.152941, 0.141176, 0.180392, 0.0901961)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(144, 192)
 script = ExtResource("1_fdmgj")
 extinction_scene = ExtResource("2_npxy2")
@@ -326,3 +335,13 @@ shape = SubResource("RectangleShape2D_8jn7x")
 position = Vector2(-1, -46.5)
 shape = SubResource("RectangleShape2D_i4tt7")
 debug_color = Color(0.930737, 0.134743, 0.562206, 0.42)
+
+[node name="HealthProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.411765, 1, 0, 1)
+offset_left = -42.0
+offset_top = -104.0
+offset_right = 39.0
+offset_bottom = -93.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4mupr")
+value = 30.0
+show_percentage = false

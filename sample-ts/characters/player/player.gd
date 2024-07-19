@@ -1,6 +1,8 @@
+class_name Player
 extends CharacterBody2D
 
-@export var health: int = 10
+@export var health: int = 30
+@export var max_health: int = 100
 @export var speed: float = 7
 @export var base_damage: int = 1
 
@@ -10,6 +12,7 @@ extends CharacterBody2D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var punch_hitbox: Area2D = $HitBox
 @onready var vulnerable_hitbox: Area2D = $VulnerableHitBox
+@onready var health_progress_bar: ProgressBar = $HealthProgressBar
 
 
 
@@ -44,8 +47,10 @@ func _process(delta):
 	# Detect and calculate taint damage to player
 	update_char_hitbox_detection(delta)
 	
+	# Update ProgressBar
+	health_progress_bar.max_value = max_health
+	health_progress_bar.value = health
 	
-
 func _physics_process(delta):
 	# Alterar velocidade
 	var target_velocity = input_vector * speed * 100
@@ -128,7 +133,13 @@ func update_char_hitbox_detection(delta):
 		if unit.is_in_group("enemies"):
 			damage(1)
 
-	
+
+func restore_health(amount: int):
+	health += amount
+	if health > max_health:
+		health = max_health
+	print("Player health restored in", amount)
+
 func deal_damage_to_enemies():
 	# Detect enemies in contact with the hit box
 	var creatures = punch_hitbox.get_overlapping_bodies()
