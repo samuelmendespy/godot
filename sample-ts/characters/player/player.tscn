@@ -345,3 +345,5 @@ offset_bottom = -93.0
 theme_override_styles/background = SubResource("StyleBoxFlat_4mupr")
 value = 30.0
 show_percentage = false
+
+[node name="PlayerController" type="Node" parent="."]

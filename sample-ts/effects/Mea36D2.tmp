@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dc2c5lrd73ckb"]
 
 [ext_resource type="Texture2D" uid="uid://bi850wo65jjs3" path="res://addons/Tiny Swords (Update 010)/Resources/Resources/M_Spawn.png" id="1_74ugu"]
-[ext_resource type="Script" path="res://scripts/restore_health.gd" id="2_evpmo"]
+[ext_resource type="Script" path="res://effects/restore_health.gd" id="2_evpmo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_br4sn"]
 atlas = ExtResource("1_74ugu")
@@ -63,15 +63,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_poagy"]
 radius = 29.0689
 
-[node name="Meat" type="AnimatedSprite2D" groups=["curatives"]]
+[node name="Meat" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_503oj")
+frame = 6
 offset = Vector2(0, -29)
+script = ExtResource("2_evpmo")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, -17)
+position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_poagy")
-
-[node name="CurativeActivation" type="Node" parent="."]
-script = ExtResource("2_evpmo")

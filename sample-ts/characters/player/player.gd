@@ -29,6 +29,8 @@ var toxic_damage: int = 1
 func _process(delta):
 	# Inject player position on GameManager
 	GameManager.player_position = position
+	# Inject player velocity on GameManager
+	GameManager.player_velocity = velocity
 	
 	# Read player input
 	read_input()

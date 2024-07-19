@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://tu8py5j4hiot"]
 
 [ext_resource type="Texture2D" uid="uid://bxcrdi1pvofel" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="1_23srv"]
-[ext_resource type="Script" path="res://effects/extinction.gd" id="2_pg5pw"]
+[ext_resource type="Script" path="res://scripts/extinction.gd" id="2_pg5pw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66tid"]
 atlas = ExtResource("1_23srv")

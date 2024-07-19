@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://druuu7yt1lc52"]
+
+[ext_resource type="Script" path="res://scripts/countdown_timer.gd" id="1_5xbqy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5oa8"]
+font_size = 31
+
+[node name="GameUI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_right = 49.0
+offset_bottom = 52.0
+grow_horizontal = 2
+
+[node name="TimerLabel" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.5
+offset_right = 40.5
+offset_bottom = 44.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_m5oa8")
+script = ExtResource("1_5xbqy")

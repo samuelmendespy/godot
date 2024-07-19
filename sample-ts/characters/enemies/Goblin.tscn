@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://dryr0ge1dfelf"]
 
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_rtl0k"]
+[ext_resource type="Script" path="res://scripts/behaviors/enemy.gd" id="1_rtl0k"]
 [ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_gell6"]
 [ext_resource type="Texture2D" uid="uid://cujx5ow8iwuls" path="res://addons/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_p0irf"]
-[ext_resource type="Script" path="res://characters/enemies/behaviors/follow_player.gd" id="4_kq7dn"]
+[ext_resource type="Script" path="res://scripts/behaviors/follow_player.gd" id="4_kq7dn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p63fc"]
 atlas = ExtResource("3_p0irf")
