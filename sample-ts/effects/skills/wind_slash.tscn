@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccwai5j120vp2"]
+
+[ext_resource type="Texture2D" uid="uid://b1n0oyg2remyv" path="res://addons/kenney_particle-pack/PNG (Transparent)/slash_02.png" id="1_vi18u"]
+
+[node name="WindSlash" type="Node2D"]
+
+[node name="Slash03" type="Sprite2D" parent="."]
+position = Vector2(998, -223)
+texture = ExtResource("1_vi18u")

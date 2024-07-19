@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://btu03kbrrifyp"]
+
+[ext_resource type="PackedScene" uid="uid://b07bs023hdmf" path="res://characters/player/player.tscn" id="1_4i0x7"]
+[ext_resource type="PackedScene" uid="uid://b2stx0mookcsy" path="res://effects/skills/super_light.tscn" id="2_5dkms"]
+[ext_resource type="PackedScene" uid="uid://ccwai5j120vp2" path="res://effects/skills/wind_slash.tscn" id="3_vwdye"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(463, 240)
+
+[node name="Player" parent="." instance=ExtResource("1_4i0x7")]
+position = Vector2(105, 114)
+
+[node name="SuperLight" parent="." instance=ExtResource("2_5dkms")]
+
+[node name="WindSlash" parent="." instance=ExtResource("3_vwdye")]

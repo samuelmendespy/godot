@@ -1,11 +1,16 @@
 class_name Player
 extends CharacterBody2D
 
+@export_category("Skill Data")
+@export var skill_super_light_damage: int = 5
+@export var skill_super_light_interval: float = 12
+@export var skill_super_light_scene: PackedScene
+
+@export_category("Misc")
+@export var base_damage: int = 1
 @export var health: int = 100
 @export var max_health: int = 100
 @export var speed: float = 7
-@export var base_damage: int = 1
-
 @export var extinction_scene: PackedScene
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -24,8 +29,14 @@ var was_running : bool = false
 var is_attacking : bool = false
 
 var hit_cooldown : float = 0.0
+
+# Incoming Area Damage
 var taint_cooldown: float = 0.0
 var toxic_damage: int = 1
+
+# Player Skills
+var skill_super_light_cooldown: float = 0.0
+
 
 
 func _process(delta):
@@ -41,10 +52,16 @@ func _process(delta):
 
 	# Process sprite animation and rotation to set sense
 	player_controller.play_run_idle_animation()
+	#if not is_attacking:
 	player_controller.sense_rotate_sprite()
 	
 	# Detect and calculate taint damage to player
 	update_char_hitbox_detection(delta)
+	
+	# Skills
+	# Super Light
+	update_super_light(delta)
+	
 	
 	# Update ProgressBar
 	health_progress_bar.max_value = max_health
@@ -69,6 +86,18 @@ func update_attack_cooldown(delta: float):
 			is_attacking = false
 			isrunning = false
 			animation_player.play("idle")
+
+func update_super_light(delta):
+	# Update timer
+	skill_super_light_cooldown -= delta
+	if skill_super_light_cooldown > 0: return
+	
+	skill_super_light_cooldown = skill_super_light_interval
+
+	# Summon skill super light
+	var super_light_start = skill_super_light_scene.instantiate()
+	super_light_start.damage_amount = skill_super_light_damage
+	add_child(super_light_start)
 	
 func basic_attack1():
 	if is_attacking:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://b07bs023hdmf"]
+[gd_scene load_steps=26 format=3 uid="uid://b07bs023hdmf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_fdmgj"]
 [ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_npxy2"]
 [ext_resource type="Texture2D" uid="uid://d0li2yyb4ttnx" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="2_tj06y"]
+[ext_resource type="PackedScene" uid="uid://b2stx0mookcsy" path="res://effects/skills/super_light.tscn" id="2_uxtga"]
 [ext_resource type="Script" path="res://characters/player/player_controller.gd" id="4_utiwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pas5"]
@@ -303,6 +304,7 @@ corner_detail = 20
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(144, 192)
 script = ExtResource("1_fdmgj")
+skill_super_light_scene = ExtResource("2_uxtga")
 extinction_scene = ExtResource("2_npxy2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
