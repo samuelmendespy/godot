@@ -17,6 +17,5 @@ func _ready():
 func on_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		var player: Player = body
-		print("Delete")
 		player.restore_health(regeneration_amount)
 		curative.queue_free()

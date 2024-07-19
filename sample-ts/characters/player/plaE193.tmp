@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b07bs023hdmf"]
+[gd_scene load_steps=26 format=3 uid="uid://b07bs023hdmf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_fdmgj"]
 [ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_npxy2"]
 [ext_resource type="Texture2D" uid="uid://d0li2yyb4ttnx" path="res://addons/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="2_tj06y"]
 [ext_resource type="Script" path="res://characters/player/player_controller.gd" id="4_utiwf"]
+[ext_resource type="Script" path="res://characters/player/HitBox.gd" id="4_y2one"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pas5"]
 size = Vector2(96, 77.5)
@@ -325,6 +326,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("4_y2one")
 
 [node name="Attack1Shape" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-50, -27)

@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var health: int = 30
+@export var health: int = 100
 @export var max_health: int = 100
 @export var speed: float = 7
 @export var base_damage: int = 1
@@ -13,10 +13,12 @@ extends CharacterBody2D
 @onready var punch_hitbox: Area2D = $HitBox
 @onready var vulnerable_hitbox: Area2D = $VulnerableHitBox
 @onready var health_progress_bar: ProgressBar = $HealthProgressBar
+@onready var player_controller = $PlayerController
+
+@onready var attack_1_shape = $HitBox/Attack1Shape
 
 
 
-var input_vector : Vector2 = Vector2(0, 0)
 var isrunning : bool = false
 var was_running : bool = false
 var is_attacking : bool = false
@@ -27,24 +29,19 @@ var toxic_damage: int = 1
 
 
 func _process(delta):
-	# Inject player position on GameManager
+	# Inject player position and velocity on GameManager
 	GameManager.player_position = position
-	# Inject player velocity on GameManager
 	GameManager.player_velocity = velocity
 	
 	# Read player input
-	read_input()
+	player_controller.read_input()
 	
 	# Process attack cooldown duration
 	update_attack_cooldown(delta)
-	
-	# Detect action to start hit basic attack
-	if Input.is_action_just_pressed("basic_attack"):
-		protagonist_attack()
-	
+
 	# Process sprite animation and rotation to set sense
-	play_run_idle_animation()
-	sense_rotate_sprite()
+	player_controller.play_run_idle_animation()
+	player_controller.sense_rotate_sprite()
 	
 	# Detect and calculate taint damage to player
 	update_char_hitbox_detection(delta)
@@ -55,7 +52,7 @@ func _process(delta):
 	
 func _physics_process(delta):
 	# Alterar velocidade
-	var target_velocity = input_vector * speed * 100
+	var target_velocity = player_controller.input_vector * speed * 100
 	
 	if is_attacking:
 		target_velocity *= 0.25
@@ -63,21 +60,6 @@ func _physics_process(delta):
 	velocity = lerp(velocity, target_velocity, 0.3) # smaller lerp weight to slip more after walk
 	move_and_slide()
 	
-
-func read_input():
-	# Obter input vector
-	input_vector = Input.get_vector("ui_left","ui_right", "ui_up", "ui_down")
-	
-	# Apagar deadzone do joystick para input_vector
-	var deadzone_joystick = 0.15
-	if abs(input_vector.x) < deadzone_joystick:
-		input_vector.x = 0
-	if abs(input_vector.y) < deadzone_joystick:
-		input_vector.y = 0
-	
-	# Atualizar isrunning
-	was_running = isrunning
-	isrunning = not input_vector.is_zero_approx()
 	
 func update_attack_cooldown(delta: float):
 	# Update Attack timer
@@ -88,25 +70,7 @@ func update_attack_cooldown(delta: float):
 			isrunning = false
 			animation_player.play("idle")
 	
-# Tocar animação
-func play_run_idle_animation():
-	if not is_attacking:
-		if was_running != isrunning:
-			if isrunning:
-				animation_player.play("run")
-			else:
-				animation_player.play("idle")
-	
-
-# Game logic to rotate sprite, change sprite sense
-func sense_rotate_sprite():
-	if input_vector.x > 0:
-		sprite.flip_h = false # desmarcar flip_h do Sprited2D
-	elif input_vector.x < 0:
-		sprite.flip_h = true # marcar flip_h do Sprite2D
-	
-
-func protagonist_attack():
+func basic_attack1():
 	if is_attacking:
 		return
 	
@@ -153,8 +117,10 @@ func deal_damage_to_enemies():
 			var attack_direction : Vector2
 			if sprite.flip_h:
 				attack_direction = Vector2.LEFT
+				print("left")
 			else:
 				attack_direction = Vector2.RIGHT
+				print("Right")
 			var dot_product = direction_to_enemy.dot(attack_direction)
 			print("Dot: ", dot_product)
 			#
@@ -162,13 +128,12 @@ func deal_damage_to_enemies():
 			enemy.damage(base_damage)
  
 
-
 func damage(amount: int):
 	if health <= 0 : return
 	
 	health -= amount
-	print("Player received damage:", amount)
-	print("Player Health: ", health)
+	#print("Player received damage:", amount)
+	#print("Player Health: ", health)
 	
 	# Colorize on damage
 	modulate = Color.FIREBRICK
