@@ -7,7 +7,7 @@ var player: Player
 var player_position: Vector2
 var player_velocity: Vector2
 
-var is_game_over: bool = true
+var is_game_over: bool = false
 
 func end_game():
 	if is_game_over: return

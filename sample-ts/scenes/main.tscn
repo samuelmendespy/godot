@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ccjhih60rfe0g"]
+[gd_scene load_steps=25 format=3 uid="uid://ccjhih60rfe0g"]
 
 [ext_resource type="Texture2D" uid="uid://boc38pjbb4stq" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_245hy"]
 [ext_resource type="Texture2D" uid="uid://cbwbnsec4my5q" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="2_dd2qf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dc2c5lrd73ckb" path="res://effects/Meat.tscn" id="9_37d30"]
 [ext_resource type="PackedScene" uid="uid://druuu7yt1lc52" path="res://ui/game_ui.tscn" id="10_3cvfs"]
 [ext_resource type="PackedScene" uid="uid://bcni0hqicf21i" path="res://systems/mob_spawner.tscn" id="11_s6xxb"]
+[ext_resource type="Script" path="res://systems/difficulty.gd" id="12_njtcc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ola8a"]
 texture = ExtResource("1_245hy")
@@ -1477,7 +1478,9 @@ position = Vector2(1001, 2163.5)
 scale = Vector2(10.8, 11.6)
 shape = SubResource("RectangleShape2D_5k6w2")
 
-[node name="DifficultySystem" type="Node" parent="."]
+[node name="DifficultySystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
+script = ExtResource("12_njtcc")
+mob_spawner = NodePath("../MobSpawner")
 
 [node name="GameOverScreen" type="Node" parent="."]
 

@@ -1,9 +1,13 @@
+class_name MobSpawner
 extends Node
 
+@export_category("Spawn Settings")
+@export var mobs_rate : float = 30
 @export var creatures: Array[PackedScene]
+
+@export_category("Spawn Area")
 @onready var path_follow_2d = %PathFollow2D
 
-@export var mobs_rate : float = 30
 var cooldown : float = 0.0
 
 
