@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bo3n7km8fr0be"]
+
+[node name="GameOverUI" type="CanvasLayer"]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -167.0
+offset_right = 301.5
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.780392, 0.713726, 0.294118, 1)
+
+[node name="TopPanel" type="Panel" parent="."]
+self_modulate = Color(0.752178, 0.830441, 3.85046e-07, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -155.5
+offset_right = 105.0
+offset_bottom = -106.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+
+[node name="BottomPanel" type="Panel" parent="."]
+offset_left = 442.0
+offset_top = 355.0
+offset_right = 740.0
+offset_bottom = 455.0
+
+[node name="Label" type="Label" parent="BottomPanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 31.0
+offset_right = 257.0
+offset_bottom = 80.0
+text = "Time Survived: 02:59
+Monsters Eliminated: 60"

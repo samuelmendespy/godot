@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1o8h28jfiuie"]
+[gd_scene load_steps=15 format=3 uid="uid://d1o8h28jfiuie"]
 
 [ext_resource type="Script" path="res://scripts/behaviors/enemy.gd" id="1_ntref"]
 [ext_resource type="PackedScene" uid="uid://tu8py5j4hiot" path="res://effects/Extinction.tscn" id="2_nrxa0"]
 [ext_resource type="Texture2D" uid="uid://cdmss83ybrfg7" path="res://addons/Tiny Swords (Update 010)/Resources/Sheep/HappySheep_Bouncing.png" id="3_2r1bp"]
+[ext_resource type="PackedScene" uid="uid://dc2c5lrd73ckb" path="res://effects/Meat.tscn" id="3_8m85k"]
+[ext_resource type="PackedScene" uid="uid://bc284dvi2hcpj" path="res://effects/GoldenMeat.tscn" id="4_4uk54"]
 [ext_resource type="Script" path="res://scripts/behaviors/follow_player.gd" id="4_krqgq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnmcd"]
@@ -62,6 +64,9 @@ size = Vector2(42, 71)
 script = ExtResource("1_ntref")
 health = 1
 extinction_scene = ExtResource("2_nrxa0")
+drop_event_rate = 0.9
+drop_event_rates = Array[float]([0.5, 0.2, 0.3])
+drop_loot = Array[PackedScene]([ExtResource("3_8m85k"), ExtResource("4_4uk54"), ExtResource("3_8m85k")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

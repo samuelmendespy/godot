@@ -1,20 +1,19 @@
-[gd_scene load_steps=25 format=3 uid="uid://bx62dyc7e10o4"]
+[gd_scene load_steps=24 format=3 uid="uid://ccjhih60rfe0g"]
 
-[ext_resource type="Texture2D" uid="uid://boc38pjbb4stq" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_6n66r"]
-[ext_resource type="Texture2D" uid="uid://cbwbnsec4my5q" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="2_e3ivq"]
-[ext_resource type="Texture2D" uid="uid://da5bn21nj7lqp" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="3_hkffj"]
-[ext_resource type="Texture2D" uid="uid://ds31twyk6fs12" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloorB.png" id="4_gmddm"]
-[ext_resource type="Texture2D" uid="uid://bpay7ter6bc66" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="5_hngfr"]
-[ext_resource type="PackedScene" uid="uid://b07bs023hdmf" path="res://characters/player/player.tscn" id="6_qn1qp"]
-[ext_resource type="Texture2D" uid="uid://cyau2l1gray26" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_03.png" id="6_rh8yh"]
-[ext_resource type="Texture2D" uid="uid://dh11o1ue7igxk" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_02.png" id="7_rnxn5"]
-[ext_resource type="PackedScene" uid="uid://bcni0hqicf21i" path="res://systems/mob_spawner.tscn" id="8_lpvww"]
-[ext_resource type="PackedScene" uid="uid://druuu7yt1lc52" path="res://ui/game_ui.tscn" id="8_wwk6i"]
-[ext_resource type="PackedScene" uid="uid://dc2c5lrd73ckb" path="res://effects/Meat.tscn" id="10_kxjy8"]
-[ext_resource type="PackedScene" uid="uid://bc284dvi2hcpj" path="res://effects/GoldenMeat.tscn" id="12_spdjr"]
+[ext_resource type="Texture2D" uid="uid://boc38pjbb4stq" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_245hy"]
+[ext_resource type="Texture2D" uid="uid://cbwbnsec4my5q" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="2_dd2qf"]
+[ext_resource type="Texture2D" uid="uid://da5bn21nj7lqp" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="3_2katj"]
+[ext_resource type="Texture2D" uid="uid://ds31twyk6fs12" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloorB.png" id="4_hom1f"]
+[ext_resource type="Texture2D" uid="uid://bpay7ter6bc66" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="5_ed7si"]
+[ext_resource type="Texture2D" uid="uid://cyau2l1gray26" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_03.png" id="6_7y8kk"]
+[ext_resource type="Texture2D" uid="uid://dh11o1ue7igxk" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_02.png" id="7_8re40"]
+[ext_resource type="PackedScene" uid="uid://b07bs023hdmf" path="res://characters/player/player.tscn" id="8_whop7"]
+[ext_resource type="PackedScene" uid="uid://dc2c5lrd73ckb" path="res://effects/Meat.tscn" id="9_37d30"]
+[ext_resource type="PackedScene" uid="uid://druuu7yt1lc52" path="res://ui/game_ui.tscn" id="10_3cvfs"]
+[ext_resource type="PackedScene" uid="uid://bcni0hqicf21i" path="res://systems/mob_spawner.tscn" id="11_s6xxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ola8a"]
-texture = ExtResource("1_6n66r")
+texture = ExtResource("1_245hy")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -400,7 +399,7 @@ texture = ExtResource("1_6n66r")
 11:20/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1dlys"]
-texture = ExtResource("2_e3ivq")
+texture = ExtResource("2_dd2qf")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -637,7 +636,7 @@ texture = ExtResource("2_e3ivq")
 19:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aue5a"]
-texture = ExtResource("3_hkffj")
+texture = ExtResource("3_2katj")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1098,7 +1097,7 @@ texture = ExtResource("3_hkffj")
 19:25/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfj5r"]
-texture = ExtResource("4_gmddm")
+texture = ExtResource("4_hom1f")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1149,7 +1148,7 @@ texture = ExtResource("4_gmddm")
 0:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_caxcs"]
-texture = ExtResource("5_hngfr")
+texture = ExtResource("5_ed7si")
 3:3/0 = 0
 3:1/0 = 0
 3:2/0 = 0
@@ -1168,7 +1167,7 @@ texture = ExtResource("5_hngfr")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xlla"]
-texture = ExtResource("6_rh8yh")
+texture = ExtResource("6_7y8kk")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -1323,7 +1322,7 @@ texture = ExtResource("6_rh8yh")
 19:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utl5p"]
-texture = ExtResource("7_rnxn5")
+texture = ExtResource("7_8re40")
 3:3/0 = 0
 4:3/0 = 0
 10:3/0 = 0
@@ -1429,7 +1428,7 @@ size = Vector2(17.9856, 87.4821)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k6w2"]
 size = Vector2(195.731, 24.7414)
 
-[node name="World" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -1444,17 +1443,17 @@ layer_1/tile_data = PackedInt32Array(65532, 5, 0, 131068, 5, 1, 196604, 5, 2, 26
 layer_2/name = "Deco"
 layer_2/tile_data = PackedInt32Array(-262129, 655366, 2, -196593, 655366, 3, -131057, 655366, 4, -65521, 655366, 5, -262128, 720902, 2, -196592, 720902, 3, -131056, 720902, 4, -65520, 720902, 5, -262127, 786438, 2, -196591, 786438, 3, -131055, 786438, 4, -65519, 786438, 5, -262126, 851974, 2, -196590, 851974, 3, -131054, 851974, 4, -65518, 851974, 5, -196589, 917510, 3, -131053, 917510, 4, 131067, 655366, 2, 196603, 655366, 3, 262139, 655366, 4, 327675, 655366, 5, 131068, 720902, 2, 196604, 720902, 3, 262140, 720902, 4, 327676, 720902, 5, 131069, 786438, 2, 196605, 786438, 3, 262141, 786438, 4, 327677, 786438, 5, 131070, 851974, 2, 196606, 851974, 3, 262142, 851974, 4, 327678, 851974, 5, 196607, 917510, 3, 262143, 917510, 4, 786427, 655366, 2, 851963, 655366, 3, 917499, 655366, 4, 983035, 655366, 5, 786428, 720902, 2, 851964, 720902, 3, 917500, 720902, 4, 983036, 720902, 5, 786429, 786438, 2, 851965, 786438, 3, 917501, 786438, 4, 983037, 786438, 5, 786430, 851974, 2, 851966, 851974, 3, 917502, 851974, 4, 983038, 851974, 5, 851967, 917510, 3, 917503, 917510, 4, 1376263, 655366, 2, 1441799, 655366, 3, 1507335, 655366, 4, 1572871, 655366, 5, 1376264, 720902, 2, 1441800, 720902, 3, 1507336, 720902, 4, 1572872, 720902, 5, 1376265, 786438, 2, 1441801, 786438, 3, 1507337, 786438, 4, 1572873, 786438, 5, 1376266, 851974, 2, 1441802, 851974, 3, 1507338, 851974, 4, 1572874, 851974, 5, 1441803, 917510, 3, 1507339, 917510, 4, 1310736, 655366, 2, 1376272, 655366, 3, 1441808, 655366, 4, 1507344, 655366, 5, 1310737, 720902, 2, 1376273, 720902, 3, 1441809, 720902, 4, 1507345, 720902, 5, 1310738, 786438, 2, 1376274, 786438, 3, 1441810, 786438, 4, 1507346, 786438, 5, 1310739, 851974, 2, 1376275, 851974, 3, 1441811, 851974, 4, 1507347, 851974, 5, 1376276, 917510, 3, 1441812, 917510, 4, 524310, 655366, 2, 589846, 655366, 3, 655382, 655366, 4, 720918, 655366, 5, 524311, 720902, 2, 589847, 720902, 3, 655383, 720902, 4, 720919, 720902, 5, 524312, 786438, 2, 589848, 786438, 3, 655384, 786438, 4, 720920, 786438, 5, 524313, 851974, 2, 589849, 851974, 3, 655385, 851974, 4, 720921, 851974, 5, 589850, 917510, 3, 655386, 917510, 4, 65558, 655366, 2, 131094, 655366, 3, 196630, 655366, 4, 262166, 655366, 5, 65559, 720902, 2, 131095, 720902, 3, 196631, 720902, 4, 262167, 720902, 5, 65560, 786438, 2, 131096, 786438, 3, 196632, 786438, 4, 262168, 786438, 5, 65561, 851974, 2, 131097, 851974, 3, 196633, 851974, 4, 262169, 851974, 5, 131098, 917510, 3, 196634, 917510, 4, 917526, 655366, 2, 983062, 655366, 3, 1048598, 655366, 4, 1114134, 655366, 5, 917527, 720902, 2, 983063, 720902, 3, 1048599, 720902, 4, 1114135, 720902, 5, 917528, 786438, 2, 983064, 786438, 3, 1048600, 786438, 4, 1114136, 786438, 5, 917529, 851974, 2, 983065, 851974, 3, 1048601, 851974, 4, 1114137, 851974, 5, 983066, 917510, 3, 1048602, 917510, 4, -131070, 131079, 4, -196605, 196615, 3, -131069, 196615, 4, -65533, 196615, 5, -196604, 262151, 3, -131068, 262151, 4, -65532, 262151, 5, -131067, 327687, 4, -65531, 327687, 5, 524284, 131079, 4, 458749, 196615, 3, 524285, 196615, 4, 589821, 196615, 5, 458750, 262151, 3, 524286, 262151, 4, 589822, 262151, 5, 524287, 327687, 4, 589823, 327687, 5, 393238, 131079, 4, 327703, 196615, 3, 393239, 196615, 4, 458775, 196615, 5, 327704, 262151, 3, 393240, 262151, 4, 458776, 262151, 5, 393241, 327687, 4, 458777, 327687, 5, 1310742, 131079, 4, 1245207, 196615, 3, 1310743, 196615, 4, 1376279, 196615, 5, 1245208, 262151, 3, 1310744, 262151, 4, 1376280, 262151, 5, 1310745, 327687, 4, 1376281, 327687, 5, 1376252, 131079, 4, 1310717, 196615, 3, 1376253, 196615, 4, 1441789, 196615, 5, 1310718, 262151, 3, 1376254, 262151, 4, 1441790, 262151, 5, 1376255, 327687, 4, 1441791, 327687, 5)
 
-[node name="Player" parent="." instance=ExtResource("6_qn1qp")]
+[node name="Player" parent="." instance=ExtResource("8_whop7")]
 position = Vector2(799, 328)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Meat2" parent="." instance=ExtResource("10_kxjy8")]
+[node name="Meat2" parent="." instance=ExtResource("9_37d30")]
 position = Vector2(932, 38)
 
-[node name="GameUI" parent="." instance=ExtResource("8_wwk6i")]
+[node name="GameUI" parent="." instance=ExtResource("10_3cvfs")]
 
-[node name="MobSpawner" parent="." instance=ExtResource("8_lpvww")]
+[node name="MobSpawner" parent="." instance=ExtResource("11_s6xxb")]
 
 [node name="WolrdLimit" type="StaticBody2D" parent="."]
 visible = false
@@ -1478,5 +1477,10 @@ position = Vector2(1001, 2163.5)
 scale = Vector2(10.8, 11.6)
 shape = SubResource("RectangleShape2D_5k6w2")
 
-[node name="GoldenMeat" parent="." instance=ExtResource("12_spdjr")]
-position = Vector2(910, 168)
+[node name="DifficultySystem" type="Node" parent="."]
+
+[node name="GameOverScreen" type="Node" parent="."]
+
+[node name="RestartGame" type="Node" parent="."]
+
+[node name="ScoreSystem" type="Node" parent="."]

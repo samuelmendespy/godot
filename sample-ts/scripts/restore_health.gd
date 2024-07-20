@@ -1,6 +1,5 @@
 extends Node
 
-@export var regeneration_amount : int = 50
 
 var curative
 var curative_collection_area: Area2D
@@ -17,5 +16,5 @@ func _ready():
 func on_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		var player: Player = body
-		player.restore_health(regeneration_amount)
+		player.restore_health(curative.regeneration_amount)
 		curative.queue_free()
