@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var monsters_slain_label: Label = %MonstersSlain
 
 
-@export var restart_delay: float = 5.0
+@export var restart_delay: float = 15.0
 var restart_cooldown: float
 
 
@@ -20,6 +20,7 @@ func _ready():
 
 func _process(delta):
 	restart_cooldown -= delta
+	# Auto restart game after cooldown 15 seconds
 	if restart_cooldown <= 0.0:
 		restart_game()
 

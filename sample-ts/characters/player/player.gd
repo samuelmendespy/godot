@@ -40,6 +40,11 @@ var skill_super_light_cooldown: float = 0.0
 
 
 func _process(delta):
+	
+	# Check game status
+	if GameManager.is_game_over:
+		trigger_extinction()
+	
 	# Inject player position and velocity on GameManager
 	GameManager.player_position = position
 	GameManager.player_velocity = velocity

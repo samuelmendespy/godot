@@ -10,9 +10,8 @@ var seconds: int = 0
 var minutes: int = 0
 
 func _process(delta):
-	
 	# Endgame if time is up
-	if countdown_in_seconds <= 0:
+	if countdown_limit_in_seconds == time_elapsed_in_seconds:
 		GameManager.end_game()
 	else:
 		time_elapsed += delta
@@ -24,7 +23,6 @@ func _process(delta):
 	# Transform time played to mm:ss
 	countdown_in_seconds = countdown_limit_in_seconds - time_elapsed_in_seconds
 	
-		
 	seconds = countdown_in_seconds % 60
 	minutes = countdown_in_seconds / 60
 	

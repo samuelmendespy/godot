@@ -17,5 +17,5 @@ func trigger_game_over():
 		game_ui = null
 	
 	# Criar GameOverUI
-	#var game_over_ui: GameOverUI = game_over_ui_template.instantiate()
-	#add_child(game_over_ui)
+	var game_over_ui: GameOverUI = game_over_ui_template.instantiate()
+	add_child(game_over_ui)

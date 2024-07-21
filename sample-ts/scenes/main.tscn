@@ -1431,9 +1431,8 @@ size = Vector2(17.9856, 87.4821)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k6w2"]
 size = Vector2(195.731, 24.7414)
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("game_ui")]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_4733d")
-game_ui = NodePath("")
 game_over_ui_template = ExtResource("2_qk5uc")
 
 [node name="TileMap" type="TileMap" parent="."]
