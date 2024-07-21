@@ -1419,18 +1419,6 @@ sources/5 = SubResource("TileSetAtlasSource_caxcs")
 sources/6 = SubResource("TileSetAtlasSource_7xlla")
 sources/7 = SubResource("TileSetAtlasSource_utl5p")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvo2c"]
-size = Vector2(2068, 213)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqymi"]
-size = Vector2(27.3389, 130.202)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r77xf"]
-size = Vector2(17.9856, 87.4821)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k6w2"]
-size = Vector2(195.731, 24.7414)
-
 [sub_resource type="LabelSettings" id="LabelSettings_8ccbr"]
 font_size = 31
 
@@ -1471,6 +1459,18 @@ _data = {
 "default": SubResource("Animation_6a3c8")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvo2c"]
+size = Vector2(2068, 213)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqymi"]
+size = Vector2(27.3389, 130.202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r77xf"]
+size = Vector2(17.9856, 87.4821)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k6w2"]
+size = Vector2(195.731, 24.7414)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4733d")
 game_over_ui_template = ExtResource("2_qk5uc")
@@ -1492,6 +1492,20 @@ layer_2/tile_data = PackedInt32Array(-262129, 655366, 2, -196593, 655366, 3, -13
 position = Vector2(799, 328)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="InputInstruction" type="Label" parent="Player"]
+offset_left = -117.0
+offset_top = -184.0
+offset_right = 129.0
+offset_bottom = -140.0
+text = "Press Z to attack"
+label_settings = SubResource("LabelSettings_8ccbr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/InputInstruction"]
+libraries = {
+"": SubResource("AnimationLibrary_e0yju")
+}
+autoplay = "default"
 
 [node name="Meat2" parent="." instance=ExtResource("9_37d30")]
 position = Vector2(932, 38)
@@ -1525,17 +1539,3 @@ scale = Vector2(10.8, 11.6)
 shape = SubResource("RectangleShape2D_5k6w2")
 
 [node name="GameUI" parent="." instance=ExtResource("10_3cvfs")]
-
-[node name="InputInstruction" type="Label" parent="."]
-offset_left = 682.0
-offset_top = 144.0
-offset_right = 928.0
-offset_bottom = 188.0
-text = "Press Z to attack"
-label_settings = SubResource("LabelSettings_8ccbr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InputInstruction"]
-libraries = {
-"": SubResource("AnimationLibrary_e0yju")
-}
-autoplay = "default"
