@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn5px5k632qgg"]
+
+[ext_resource type="LabelSettings" uid="uid://b72s2ayusebf6" path="res://effects/new_label_settings.tres" id="1_cfpsg"]
+
+[node name="game_ui" type="CanvasLayer"]
+metadata/_edit_horizontal_guides_ = [-37.0, 278.0]
+metadata/_edit_vertical_guides_ = [125.0, 250.0]
+
+[node name="TopPanel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -228.0
+offset_right = 228.0
+offset_bottom = 69.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -22.0
+offset_right = 40.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00:00"
+label_settings = ExtResource("1_cfpsg")
+
+[node name="Timer" type="Timer" parent="TopPanel/Label"]
+wait_time = 5.0
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HealthSymbol" type="Polygon2D" parent="Panel"]
+position = Vector2(25, -14)
+scale = Vector2(0.085614, 0.245614)
+polygon = PackedVector2Array(-143, 142, -20, 223, 105, 143, -21, 109)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -22.0
+offset_right = 54.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "123456"
+label_settings = ExtResource("1_cfpsg")

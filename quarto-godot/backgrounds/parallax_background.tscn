@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqja862u1jnyk"]
+
+[ext_resource type="Texture2D" uid="uid://cvjc0cxsq75tm" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/sky.png" id="1_xlp3b"]
+[ext_resource type="Texture2D" uid="uid://djvumpk4d7amh" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/clouds_1.png" id="2_xo4bh"]
+[ext_resource type="Texture2D" uid="uid://c5hifan3lcb7r" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/clouds_2.png" id="3_3i0m0"]
+[ext_resource type="Texture2D" uid="uid://qy212o0jsd6o" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/clouds_3.png" id="4_ovmvy"]
+[ext_resource type="Texture2D" uid="uid://dbv533033l64j" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/clouds_4.png" id="5_qqlw7"]
+[ext_resource type="Texture2D" uid="uid://trivyyvemom3" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/rocks_1.png" id="6_kqsig"]
+[ext_resource type="Texture2D" uid="uid://4xg7g7r5qlc5" path="res://addons/Free-Horizontal-Game-Backgrounds/PNG/game_background_1/layers/rocks_2.png" id="7_0ade5"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+
+[node name="SkyLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="Sky" type="Sprite2D" parent="SkyLayer"]
+texture = ExtResource("1_xlp3b")
+centered = false
+
+[node name="Clouds1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Clouds1Sprite" type="Sprite2D" parent="Clouds1"]
+texture = ExtResource("2_xo4bh")
+centered = false
+
+[node name="Clouds2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Clouds2Sprite" type="Sprite2D" parent="Clouds2"]
+texture = ExtResource("3_3i0m0")
+centered = false
+
+[node name="Clouds3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.25, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Clouds3Sprite" type="Sprite2D" parent="Clouds3"]
+texture = ExtResource("4_ovmvy")
+centered = false
+
+[node name="Clouds4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Clouds4Sprite" type="Sprite2D" parent="Clouds4"]
+texture = ExtResource("5_qqlw7")
+centered = false
+
+[node name="Rocks1Layer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Rocks1Sprite" type="Sprite2D" parent="Rocks1Layer2"]
+texture = ExtResource("6_kqsig")
+centered = false
+
+[node name="Rocks2Layer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Rocks2Layer" type="Sprite2D" parent="Rocks2Layer"]
+texture = ExtResource("7_0ade5")
+centered = false
