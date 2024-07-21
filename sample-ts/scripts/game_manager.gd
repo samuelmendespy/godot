@@ -8,6 +8,8 @@ var player_position: Vector2
 var player_velocity: Vector2
 
 var is_game_over: bool = false
+var game_time_seconds : int = 123
+var monsters_slain : int = 123
 
 func end_game():
 	if is_game_over: return

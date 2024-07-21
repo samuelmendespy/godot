@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bo3n7km8fr0be"]
+[gd_scene load_steps=2 format=3 uid="uid://bo3n7km8fr0be"]
+
+[ext_resource type="Script" path="res://ui/game_over_ui.gd" id="1_mxiet"]
 
 [node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_mxiet")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -51,11 +54,26 @@ offset_top = 355.0
 offset_right = 740.0
 offset_bottom = 455.0
 
-[node name="Label" type="Label" parent="BottomPanel"]
-layout_mode = 0
-offset_left = 70.0
-offset_top = 31.0
-offset_right = 257.0
-offset_bottom = 80.0
-text = "Time Survived: 02:59
-Monsters Eliminated: 60"
+[node name="MarginContainer" type="MarginContainer" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -25.0
+offset_right = 315.0
+offset_bottom = 25.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TimeSurvived" type="Label" parent="BottomPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Time survived: 3600 seconds"
+
+[node name="MonstersSlain" type="Label" parent="BottomPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Monsters defeated: 0000000"

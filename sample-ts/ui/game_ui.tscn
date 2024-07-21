@@ -16,7 +16,7 @@ offset_right = 49.0
 offset_bottom = 52.0
 grow_horizontal = 2
 
-[node name="TimerLabel" type="Label" parent="Panel"]
+[node name="CountdownTimer" type="Label" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5

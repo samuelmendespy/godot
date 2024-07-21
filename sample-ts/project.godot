@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sample Tiny Sword"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://systems/Menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -37,4 +37,3 @@ basic_attack={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(6.30998e-05, 0.0450816, 0.000115502, 1)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://ccjhih60rfe0g"]
+[gd_scene load_steps=27 format=3 uid="uid://ccjhih60rfe0g"]
 
 [ext_resource type="Texture2D" uid="uid://boc38pjbb4stq" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="1_245hy"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_4733d"]
 [ext_resource type="Texture2D" uid="uid://cbwbnsec4my5q" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="2_dd2qf"]
+[ext_resource type="PackedScene" uid="uid://bo3n7km8fr0be" path="res://ui/GameOverUI.tscn" id="2_qk5uc"]
 [ext_resource type="Texture2D" uid="uid://da5bn21nj7lqp" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="3_2katj"]
 [ext_resource type="Texture2D" uid="uid://ds31twyk6fs12" path="res://addons/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloorB.png" id="4_hom1f"]
 [ext_resource type="Texture2D" uid="uid://bpay7ter6bc66" path="res://addons/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="5_ed7si"]
@@ -1429,7 +1431,10 @@ size = Vector2(17.9856, 87.4821)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k6w2"]
 size = Vector2(195.731, 24.7414)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("game_ui")]
+script = ExtResource("1_4733d")
+game_ui = NodePath("")
+game_over_ui_template = ExtResource("2_qk5uc")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -1452,9 +1457,11 @@ position = Vector2(799, 328)
 [node name="Meat2" parent="." instance=ExtResource("9_37d30")]
 position = Vector2(932, 38)
 
-[node name="GameUI" parent="." instance=ExtResource("10_3cvfs")]
-
 [node name="MobSpawner" parent="." instance=ExtResource("11_s6xxb")]
+
+[node name="DifficultySystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
+script = ExtResource("12_njtcc")
+mob_spawner = NodePath("../MobSpawner")
 
 [node name="WolrdLimit" type="StaticBody2D" parent="."]
 visible = false
@@ -1478,12 +1485,4 @@ position = Vector2(1001, 2163.5)
 scale = Vector2(10.8, 11.6)
 shape = SubResource("RectangleShape2D_5k6w2")
 
-[node name="DifficultySystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
-script = ExtResource("12_njtcc")
-mob_spawner = NodePath("../MobSpawner")
-
-[node name="GameOverScreen" type="Node" parent="."]
-
-[node name="RestartGame" type="Node" parent="."]
-
-[node name="ScoreSystem" type="Node" parent="."]
+[node name="GameUI" parent="." instance=ExtResource("10_3cvfs")]

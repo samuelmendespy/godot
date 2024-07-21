@@ -38,6 +38,7 @@ func damage(amount: int):
 	
 	# Check health status
 	if health <= 0:
+		GameManager.monsters_slain += 1
 		if drop_loot.size() < 1:
 			trigger_extinction()
 		else:

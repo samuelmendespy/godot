@@ -178,6 +178,8 @@ func damage(amount: int):
 		trigger_extinction()
 
 func trigger_extinction():
+	GameManager.end_game()
+	
 	if extinction_scene:
 		var extinction_object = extinction_scene.instantiate()
 		extinction_object.position = position
