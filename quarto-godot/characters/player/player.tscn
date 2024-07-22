@@ -1,16 +1,120 @@
-[gd_scene load_steps=4 format=3 uid="uid://denjlx4rtdojc"]
+[gd_scene load_steps=19 format=3 uid="uid://denjlx4rtdojc"]
 
 [ext_resource type="Texture2D" uid="uid://dk4c1qdqu0ui7" path="res://addons/itch_Ninja Adventure - Asset Pack/Actor/Character/Cavegirl/SeparateAnim/Walk.png" id="1_ilguj"]
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_sc83n"]
+[ext_resource type="Texture2D" uid="uid://ch0sgs46wruco" path="res://addons/itch_Ninja Adventure - Asset Pack/Actor/Character/Cavegirl/SeparateAnim/Idle.png" id="3_r7g4w"]
+[ext_resource type="Texture2D" uid="uid://b4go3aj52xgo6" path="res://addons/itch_Ninja Adventure - Asset Pack/Actor/Character/Cavegirl/SeparateAnim/Jump.png" id="3_xrh2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuciw"]
-size = Vector2(76, 86)
+size = Vector2(15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfvx4"]
+atlas = ExtResource("3_r7g4w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o41j"]
+atlas = ExtResource("3_xrh2f")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82uct"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar0xd"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrpti"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6s5r"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40foy"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vvw8"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed06f"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1y0p"]
+atlas = ExtResource("1_ilguj")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etqvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfvx4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o41j")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82uct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar0xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrpti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6s5r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40foy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vvw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed06f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1y0p")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_f3ges"]
+resource_name = "default"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k53a"]
+_data = {
+"default": SubResource("Animation_f3ges")
+}
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(137, 247)
+scale = Vector2(5, 5)
 script = ExtResource("1_sc83n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(-1, -48)
 scale = Vector2(5.625, 5.625)
@@ -19,5 +123,16 @@ hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -45)
+position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_vuciw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_etqvt")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2k53a")
+}
