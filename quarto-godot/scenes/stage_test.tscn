@@ -1,19 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dc8xvr4qhiwoq"]
 
 [ext_resource type="PackedScene" uid="uid://bqja862u1jnyk" path="res://backgrounds/parallax_background.tscn" id="1_5ga22"]
+[ext_resource type="PackedScene" uid="uid://b3rjdf7ombyce" path="res://environment/platforms/test_static_ground.tscn" id="3_0d4yh"]
 [ext_resource type="PackedScene" uid="uid://db3qq2nde3nd8" path="res://environment/platforms/moving_platform.tscn" id="3_bjmal"]
 [ext_resource type="PackedScene" uid="uid://denjlx4rtdojc" path="res://characters/player/player.tscn" id="3_sb1rn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbud3"]
-size = Vector2(2180, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbnny"]
 size = Vector2(237, 2070)
 
 [node name="StageTest" type="Node2D"]
-
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_5ga22")]
 
@@ -21,18 +16,7 @@ format = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="static_platform" type="StaticBody2D" parent="."]
-position = Vector2(67, 321)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="static_platform"]
-position = Vector2(1092, 41)
-shape = SubResource("RectangleShape2D_pbud3")
-
-[node name="ColorRect" type="ColorRect" parent="static_platform"]
-offset_left = -57.0
-offset_top = 18.0
-offset_right = 2167.0
-offset_bottom = 65.0
+[node name="test_static_ground" parent="." instance=ExtResource("3_0d4yh")]
 
 [node name="moving_platform" parent="." instance=ExtResource("3_bjmal")]
 position = Vector2(490, 72)
@@ -41,14 +25,12 @@ move_horizontal = false
 [node name="moving_platform2" parent="." instance=ExtResource("3_bjmal")]
 position = Vector2(909, -289)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StageBounds" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-104.5, -609)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StageBounds"]
+position = Vector2(2337, -609)
 shape = SubResource("RectangleShape2D_kbnny")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(2337, -609)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageBounds"]
+position = Vector2(-104.5, -609)
 shape = SubResource("RectangleShape2D_kbnny")

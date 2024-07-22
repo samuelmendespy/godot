@@ -9,13 +9,19 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var is_jumping: bool = false
 
+var is_running = false
+
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
-# Input track
-var last_input_direction: Vector2 = Vector2.ZERO
-var current_input_direction: Vector2 = Vector2.ZERO
+
 
 func _physics_process(delta):
+	# Toggle running on sprint key press
+	if Input.is_action_pressed("sprint"):
+		is_running = true
+	else:
+		is_running = false
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -40,7 +46,11 @@ func _physics_process(delta):
 		
 		# Check if is jumping
 		if !is_jumping:
-			animated_sprite.play("run")
+			if is_running:
+				velocity.x *= 4
+				animated_sprite.play("run")
+			else:
+				animated_sprite.play("walk")
 	elif is_jumping:
 		animated_sprite.play("jump")
 	else:
@@ -60,3 +70,5 @@ func rotate_with_fliph(direction):
 		animated_sprite.flip_h = false
 	elif direction < 0: # Left direction
 		animated_sprite.flip_h = true
+		
+
