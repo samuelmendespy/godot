@@ -2,18 +2,20 @@ extends CharacterBody2D
 
 
 const SPEED: float = 300.0 # 300
-const JUMP_VELOCITY: float = -1000.0 # - 400
+const JUMP_VELOCITY: float = -500.0 # - 400
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Animation variables
-var is_jumping: bool = false
 var is_running = false
 var is_hurt = false
 # Movement variables
 var direction: float
 
+# Jump limit
+var jump_limit = 2
+var extra_jumps_count = 0
 # Hurt moves variables
 var knockback_vector: Vector2 = Vector2.ZERO
 @onready var ray_right = $ray_right
@@ -41,9 +43,13 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		is_jumping = true
-	elif is_on_floor():
-		is_jumping = false
+		
+	# Second jump
+	elif Input.is_action_just_pressed("ui_accept") and extra_jumps_count < jump_limit:
+		print("Extra jumps count:",extra_jumps_count+1)
+		velocity.y = JUMP_VELOCITY
+		extra_jumps_count += 1
+	
 		
 	direction = Input.get_axis("move_left", "move_right")
 	if direction:
@@ -116,6 +122,9 @@ func take_damage(knockback_force: Vector2 = Vector2.ZERO,duration: float = 0.25)
 func _set_state():
 	var state = "idle"
 	
+	# Reset jumps
+	if is_on_floor():
+		extra_jumps_count = 0
 	if !is_on_floor():
 		state = "jump"
 		
