@@ -60,7 +60,7 @@ texture = ExtResource("6_kqsig")
 centered = false
 
 [node name="Rocks2Layer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.6, 0)
+motion_scale = Vector2(0.6, 0.1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Rocks2Layer" type="Sprite2D" parent="Rocks2Layer"]

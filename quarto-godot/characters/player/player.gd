@@ -7,10 +7,22 @@ const JUMP_VELOCITY: float = -1000.0 # - 400
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+# Animation variables
 var is_jumping: bool = false
-
 var is_running = false
+var is_hurt = false
+# Movement variables
+var direction: float
 
+# Hurt moves variables
+var knockback_vector: Vector2 = Vector2.ZERO
+@onready var ray_right = $ray_right
+@onready var ray_left = $ray_left
+
+
+@export_category("Player status")
+@export var player_life: int = 100
+@export_category("Player texture")
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 
@@ -33,30 +45,19 @@ func _physics_process(delta):
 	elif is_on_floor():
 		is_jumping = false
 		
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("move_left", "move_right")
+	direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
-		
 		# Sprite rotation
 		rotate_with_scale(direction)
-		#rotate_with_fliph(direction)
 		
-		# Check if is jumping
-		if !is_jumping:
-			if is_running:
-				velocity.x *= 4
-				animated_sprite.play("run")
-			else:
-				animated_sprite.play("walk")
-	elif is_jumping:
-		animated_sprite.play("jump")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animated_sprite.play("idle")
-
+	
+	if knockback_vector != Vector2.ZERO:
+		velocity = knockback_vector
+	
+	_set_state()
 	move_and_slide()
 
 # Scale direction
@@ -70,5 +71,63 @@ func rotate_with_fliph(direction):
 		animated_sprite.flip_h = false
 	elif direction < 0: # Left direction
 		animated_sprite.flip_h = true
-		
 
+
+func follow_camera(camera_node):
+	#var camera_path = camera_node.get_path()
+	#remote_transform.remote_path = camera_path
+	pass
+	
+func _on_hurtbox_body_entered(body: Node2D):
+	#if body.is_in_group("enemies"):
+		#queue_free()
+	# Player extinction on damage
+	if player_life < 0:
+		queue_free()
+	else :
+		if ray_right.is_colliding():
+			take_damage(Vector2(-200, - 200))
+		if ray_left.is_colliding():
+			take_damage(Vector2(200, - 200))
+	pass
+	
+
+
+func take_damage(knockback_force: Vector2 = Vector2.ZERO,duration: float = 0.25):
+	player_life -= 1
+	
+	if knockback_force != Vector2.ZERO:
+		knockback_vector = knockback_force
+		
+		var knockback_tween : = get_tree().create_tween()
+		# Parallel hurt knockback movement and hurt color modulate
+		# Knockback movement
+		knockback_tween.parallel().tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+		# Hurt color modulate
+		animated_sprite.modulate = Color(1,0,0, 1)
+		knockback_tween.parallel().tween_property(animated_sprite, "modulate", Color(1, 1, 1, 1), duration)
+	
+	# States
+	is_hurt = true
+	await get_tree().create_timer(.3).timeout
+	is_hurt = false
+	pass
+	
+func _set_state():
+	var state = "idle"
+	
+	if !is_on_floor():
+		state = "jump"
+		
+	elif direction:
+		if is_running:
+			velocity.x *= 4
+			state = "run"
+		else:
+			state = "walk"
+	
+	if is_hurt:
+		state = "hurt"
+		
+	if animated_sprite.name != state:
+		animated_sprite.play(state)

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5n7rrld62xr5"]
+
+[ext_resource type="PackedScene" uid="uid://4hudqwn8mpnf" path="res://prefabs/hitbox.tscn" id="1_vn5fk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h520l"]
+size = Vector2(22, 27)
+
+[sub_resource type="Animation" id="Animation_oyldl"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.261799, -0.436332, 0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fef03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cewyn"]
+_data = {
+"RESET": SubResource("Animation_fef03"),
+"idle": SubResource("Animation_oyldl")
+}
+
+[node name="ToxicGem" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 34
+metadata/_edit_horizontal_guides_ = [-6.0, -61.0]
+metadata/_edit_vertical_guides_ = [22.0, -22.0]
+
+[node name="body" type="Polygon2D" parent="."]
+modulate = Color(0.369134, 0.874526, 7.83923e-07, 1)
+position = Vector2(0, -3.5)
+color = Color(0.308952, 0.148059, 0.508501, 1)
+polygon = PackedVector2Array(0, -36, -11, -27, -11, -6, 0, 2, 11, -6, 11, -27)
+
+[node name="toxic_hat" type="Polygon2D" parent="."]
+scale = Vector2(1, 1)
+color = Color(0.475013, 0.0229333, 0.237891, 1)
+polygon = PackedVector2Array(-11, -30.5, 0, -39.5, 11, -30.5)
+
+[node name="collision_body" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_h520l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cewyn")
+}
+autoplay = "idle"
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -14.5)
+target_position = Vector2(11, 0)
+
+[node name="Hitbox" parent="." instance=ExtResource("1_vn5fk")]
+position = Vector2(0, -1.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-11, -29, 0, -38, 11, -29)
