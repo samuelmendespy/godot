@@ -19,5 +19,13 @@ func _process(delta):
 	position.x -= SPEED * direction * delta
 
 func rotate_with_scale(dir):
-	direction = dir
-	$EletricCollisionShape.scale.x = dir
+	
+	# Invert dir
+	direction = dir * -1
+	if dir < 0:
+		print("skillshot to leftside")
+		$EletricCollisionShape.scale.x = -1
+	else :
+		print("skillshot to rightside")
+		$EletricCollisionShape.scale.x = 1
+		

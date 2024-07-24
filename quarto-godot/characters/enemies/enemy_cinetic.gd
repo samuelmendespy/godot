@@ -50,12 +50,10 @@ func _on_animation_player_animation_finished(animation_name):
 
 func spawn_eletric_field():
 	var new_eletric_field = ELECTRIC_FIELD.instantiate()
-	if sign(skill_spawn_point.position.x) == 1:
+	if direction == 1: # right side
 		new_eletric_field.rotate_with_scale(1)
-		print("SPAWN RIGHT")
-	else:
+	elif direction == -1: # left side
 		new_eletric_field.rotate_with_scale(-1)
-		print("SPAWN LEFT")
 	#add_child(new_eletric_field)
 	add_sibling(new_eletric_field)
 	new_eletric_field.global_position = skill_spawn_point.global_position
