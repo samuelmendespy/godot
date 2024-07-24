@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5n7rrld62xr5"]
+[gd_scene load_steps=9 format=3 uid="uid://db808e73d5b4r"]
 
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_lpiw4"]
-[ext_resource type="PackedScene" uid="uid://4hudqwn8mpnf" path="res://prefabs/hitbox.tscn" id="1_vn5fk"]
+[ext_resource type="Script" path="res://characters/enemies/enemy_cinetic.gd" id="1_5mxti"]
+[ext_resource type="PackedScene" uid="uid://4hudqwn8mpnf" path="res://prefabs/hitbox.tscn" id="2_wmk0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h520l"]
 size = Vector2(22, 27)
@@ -19,18 +19,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(2, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("body:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_x2xo5"]
@@ -56,65 +44,73 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.261799, -0.436332, 0.174533, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(2, 2)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("body:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 1.9),
+
+[sub_resource type="Animation" id="Animation_48pv4"]
+resource_name = "shooting"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("toxic_hat:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.576968, 4.56761e-05, 0.467984, 1), Color(0.741483, 0, 0.239771, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.105518, 0.00731443, 0.232165, 1), Color(0.692585, 0.345589, 0.260704, 1), Color(0.866667, 0, 0, 1), Color(0.635718, 0.591657, 0.401032, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_eletric_field"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cewyn"]
 _data = {
 "RESET": SubResource("Animation_22py0"),
 "hurt": SubResource("Animation_x2xo5"),
-"idle": SubResource("Animation_oyldl")
+"idle": SubResource("Animation_oyldl"),
+"shooting": SubResource("Animation_48pv4")
 }
 
-[node name="ToxicGem" type="CharacterBody2D" groups=["enemies"]]
+[node name="EletricCrystal" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 34
-script = ExtResource("1_lpiw4")
+script = ExtResource("1_5mxti")
 metadata/_edit_horizontal_guides_ = [-6.0, -61.0]
 metadata/_edit_vertical_guides_ = [22.0, -22.0]
 
 [node name="body" type="Polygon2D" parent="."]
 position = Vector2(0, -3.5)
-color = Color(0.308952, 0.148059, 0.508501, 1)
-polygon = PackedVector2Array(0, -36, -11, -27, -11, -6, 0, 2, 11, -6, 11, -27)
+color = Color(0.210296, 0.343392, 0.616923, 1)
+polygon = PackedVector2Array(0, -36, -2.41842, -34.0213, -11, -27, -11, -6, 0, 2, 11, -6, 11, -27)
 
 [node name="toxic_hat" type="Polygon2D" parent="."]
-color = Color(0.475013, 0.0229333, 0.237891, 1)
+color = Color(0.866667, 0, 0, 1)
 polygon = PackedVector2Array(-11, -30.5, 0, -39.5, 11, -30.5)
 
 [node name="collision_body" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_h520l")
 
@@ -124,14 +120,22 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="wall_detector" type="RayCast2D" parent="."]
-position = Vector2(0, -14.5)
-target_position = Vector2(11, 0)
-
-[node name="Hitbox" parent="." instance=ExtResource("1_vn5fk")]
+[node name="Hitbox" parent="." instance=ExtResource("2_wmk0e")]
 position = Vector2(0, -1.5)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+visible = false
 polygon = PackedVector2Array(-11, -29, 0, -38, 11, -29)
+
+[node name="player_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -22)
+target_position = Vector2(50, 0)
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 10)
+collision_mask = 2
+
+[node name="skill_spawn_point" type="Marker2D" parent="."]
+position = Vector2(0, -22)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

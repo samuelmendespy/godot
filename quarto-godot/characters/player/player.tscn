@@ -140,3 +140,7 @@ position = Vector2(8, 0)
 target_position = Vector2(4, 0)
 
 [node name="hurtbox" parent="." instance=ExtResource("5_31n7a")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -27,6 +27,7 @@ var knockback_vector: Vector2 = Vector2.ZERO
 @export_category("Player texture")
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var remote_transform = $RemoteTransform2D
 
 
 func _physics_process(delta):
@@ -80,24 +81,10 @@ func rotate_with_fliph(direction):
 
 
 func follow_camera(camera_node):
-	#var camera_path = camera_node.get_path()
-	#remote_transform.remote_path = camera_path
+	var camera_path = camera_node.get_path()
+	remote_transform.remote_path = camera_path
 	pass
 	
-func _on_hurtbox_body_entered(body: Node2D):
-	#if body.is_in_group("enemies"):
-		#queue_free()
-	# Player extinction on damage
-	if player_life < 0:
-		queue_free()
-	else :
-		if ray_right.is_colliding():
-			take_damage(Vector2(-200, - 200))
-		if ray_left.is_colliding():
-			take_damage(Vector2(200, - 200))
-	pass
-	
-
 
 func take_damage(knockback_force: Vector2 = Vector2.ZERO,duration: float = 0.25):
 	player_life -= 1
@@ -140,3 +127,21 @@ func _set_state():
 		
 	if animated_sprite.name != state:
 		animated_sprite.play(state)
+
+
+func _on_hurtbox_body_entered(body: Node2D):
+	#if body.is_in_group("enemies"):
+		#queue_free()
+	# Player extinction on damage
+	if player_life < 0:
+		queue_free()
+	else :
+		if ray_right.is_colliding():
+			take_damage(Vector2(-200, - 200))
+		if ray_left.is_colliding():
+			take_damage(Vector2(200, - 200))
+		# One hit skillshot
+		if body.is_in_group("skillshot"):
+			body.queue_free()
+	pass
+	

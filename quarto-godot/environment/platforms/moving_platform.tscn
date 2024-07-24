@@ -10,6 +10,7 @@ size = Vector2(381, 93.5)
 script = ExtResource("1_fp0jp")
 
 [node name="platform" type="AnimatableBody2D" parent="."]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="platform"]
 position = Vector2(1, 3)

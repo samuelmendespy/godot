@@ -1,21 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc8xvr4qhiwoq"]
+[gd_scene load_steps=10 format=3 uid="uid://dc8xvr4qhiwoq"]
 
 [ext_resource type="PackedScene" uid="uid://bqja862u1jnyk" path="res://backgrounds/parallax_background.tscn" id="1_5ga22"]
+[ext_resource type="Script" path="res://scenes/stage_test.gd" id="1_jnsuv"]
 [ext_resource type="PackedScene" uid="uid://b3rjdf7ombyce" path="res://environment/platforms/test_static_ground.tscn" id="3_0d4yh"]
 [ext_resource type="PackedScene" uid="uid://db3qq2nde3nd8" path="res://environment/platforms/moving_platform.tscn" id="3_bjmal"]
 [ext_resource type="PackedScene" uid="uid://denjlx4rtdojc" path="res://characters/player/player.tscn" id="3_sb1rn"]
 [ext_resource type="PackedScene" uid="uid://b5n7rrld62xr5" path="res://characters/enemies/toxic_gem.tscn" id="5_nuvfs"]
+[ext_resource type="PackedScene" uid="uid://db808e73d5b4r" path="res://characters/enemies/electric_crystal.tscn" id="7_ppkjs"]
+[ext_resource type="PackedScene" uid="uid://wsexih740chr" path="res://environment/boxes/static_box.tscn" id="8_a1k0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbnny"]
 size = Vector2(237, 2070)
 
 [node name="StageTest" type="Node2D"]
+script = ExtResource("1_jnsuv")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_5ga22")]
 
 [node name="Player" parent="." instance=ExtResource("3_sb1rn")]
+position = Vector2(100, 234)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(5, 5)
 
 [node name="test_static_ground" parent="." instance=ExtResource("3_0d4yh")]
 collision_layer = 2
@@ -38,5 +44,20 @@ shape = SubResource("RectangleShape2D_kbnny")
 position = Vector2(-104.5, -609)
 shape = SubResource("RectangleShape2D_kbnny")
 
-[node name="ToxicEgg" parent="." instance=ExtResource("5_nuvfs")]
+[node name="ToxicGem" parent="." instance=ExtResource("5_nuvfs")]
 position = Vector2(237, 330)
+
+[node name="ElectricCrystal" parent="." instance=ExtResource("7_ppkjs")]
+position = Vector2(523, 334)
+
+[node name="static_box" parent="." instance=ExtResource("8_a1k0b")]
+position = Vector2(844, 338)
+
+[node name="static_box2" parent="." instance=ExtResource("8_a1k0b")]
+position = Vector2(306, 338)
+
+[node name="static_box3" parent="." instance=ExtResource("8_a1k0b")]
+position = Vector2(441, 288)
+
+[node name="static_box4" parent="." instance=ExtResource("8_a1k0b")]
+position = Vector2(441, 338)
