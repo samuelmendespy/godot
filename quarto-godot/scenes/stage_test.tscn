@@ -18,7 +18,7 @@ script = ExtResource("1_jnsuv")
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_5ga22")]
 
 [node name="Player" parent="." instance=ExtResource("3_sb1rn")]
-position = Vector2(100, 234)
+position = Vector2(706, 256)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(5, 5)
