@@ -27,8 +27,9 @@ func _physics_process(delta):
 	if player_detector.is_colliding():
 		#spawn_eletric_field()
 		enemy_animation.play("shooting")
-	else:
-		enemy_animation.play("idle")
+	#else:
+		#enemy_animation.play("idle")
+		# hotfix : comment play idle animation to lay hurt animation
 	
 	velocity.x = SPEED * direction
 	
