@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7ddlahapuxpv"]
+
+[ext_resource type="Shader" uid="uid://bwhql01pt1mwt" path="res://shaders/FireShaderTutorial_Flames.tres" id="1_8qgll"]
+[ext_resource type="Texture2D" uid="uid://bvyr2qy1twy0w" path="res://addons/GAP_Fire_Textures/Voronoi01.png" id="2_0c8fl"]
+[ext_resource type="Texture2D" uid="uid://dnadkh0b1kobk" path="res://addons/GAP_Fire_Textures/Flames.png" id="3_8cl0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ng76"]
+render_priority = 0
+shader = ExtResource("1_8qgll")
+shader_parameter/DissolveTiling = Vector2(1, 1)
+shader_parameter/DissolveSpeed = Vector2(0, 0)
+shader_parameter/DissolveAmount = 0.0
+shader_parameter/MainTex = ExtResource("3_8cl0x")
+shader_parameter/DissolveTexture = ExtResource("2_0c8fl")
+
+[sub_resource type="Curve" id="Curve_00gj7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.216292, 1), 0.0, 0.0, 0, 0, Vector2(0.921348, 0.11105), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_c2xfe"]
+curve = SubResource("Curve_00gj7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_veyow"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+angle_min = -360.0
+angle_max = 360.0
+gravity = Vector3(0, 5, 0)
+damping_min = 0.5
+damping_max = 1.0
+scale_min = 0.75
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_c2xfe")
+color = Color(4, 1.25, 0.6, 0.8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qjsng"]
+
+[node name="Flames" type="GPUParticles3D"]
+material_override = SubResource("ShaderMaterial_7ng76")
+amount = 20
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_veyow")
+draw_pass_1 = SubResource("QuadMesh_qjsng")

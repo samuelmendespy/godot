@@ -1,0 +1,254 @@
+[gd_scene load_steps=27 format=3 uid="uid://b8pb53ynm0osa"]
+
+[ext_resource type="Shader" uid="uid://kdqohhdl1ics" path="res://shaders/s_dynamic_shader.tres" id="1_dqwji"]
+[ext_resource type="ArrayMesh" uid="uid://1doq2q28o5g7" path="res://models/cylinder1.obj" id="2_3qqey"]
+[ext_resource type="Texture2D" uid="uid://bm7mww5lyxdrl" path="res://addons/LeLu_BeamEffect/T_VFX_Noise_9.PNG" id="2_s5hv7"]
+[ext_resource type="Texture2D" uid="uid://diy6h6cj385so" path="res://addons/LeLu_BeamEffect/T_VFX_Noise_4.PNG" id="4_2hm2x"]
+[ext_resource type="Texture2D" uid="uid://ck0xs40tq87di" path="res://addons/LeLu_BeamEffect/Noise1_tiled.png" id="4_io0mm"]
+[ext_resource type="ArrayMesh" uid="uid://d1vx52ypd3wxf" path="res://models/cylinder2.obj" id="5_0r460"]
+[ext_resource type="Shader" uid="uid://bt4mcyijuti2l" path="res://shaders/s_magic_sparkles_shader.tres" id="7_eun2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0m1n"]
+render_priority = 0
+shader = ExtResource("1_dqwji")
+shader_parameter/Speed = Vector2(2, -1)
+shader_parameter/TexturePower = 1.3
+shader_parameter/GradientPower = 1.0
+shader_parameter/EnergyTexture = ExtResource("2_s5hv7")
+
+[sub_resource type="Curve" id="Curve_ou5sy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qtjw7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_fhm3b"]
+max_value = 200.0
+_data = [Vector2(0, 0.0180961), 0.0, 0.0, 0, 0, Vector2(0.995789, 97.7183), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_8n8f8"]
+curve_x = SubResource("Curve_ou5sy")
+curve_y = SubResource("Curve_qtjw7")
+curve_z = SubResource("Curve_fhm3b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ecg3"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_8n8f8")
+color = Color(1.2, 0.5, 2.5, 0.508)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4okji"]
+render_priority = 0
+shader = ExtResource("1_dqwji")
+shader_parameter/Speed = Vector2(2, -1)
+shader_parameter/TexturePower = 1.5
+shader_parameter/GradientPower = 1.0
+shader_parameter/EnergyTexture = ExtResource("4_io0mm")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_id28y"]
+curve_x = SubResource("Curve_ou5sy")
+curve_y = SubResource("Curve_qtjw7")
+curve_z = SubResource("Curve_fhm3b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3bc7"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.3
+scale_curve = SubResource("CurveXYZTexture_id28y")
+color = Color(2, 1, 3, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u506v"]
+render_priority = 0
+shader = ExtResource("1_dqwji")
+shader_parameter/Speed = Vector2(1.5, 2)
+shader_parameter/TexturePower = 1.5
+shader_parameter/GradientPower = 3.0
+shader_parameter/EnergyTexture = ExtResource("4_2hm2x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tmqlp"]
+gravity = Vector3(0, 0, 0)
+color = Color(1.2, 0.5, 2.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1edr"]
+render_priority = 0
+shader = ExtResource("7_eun2o")
+
+[sub_resource type="Curve" id="Curve_0pfyk"]
+_data = [Vector2(0.513684, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ricao"]
+curve = SubResource("Curve_0pfyk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w1m5y"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(1, 1, 1)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 2.0
+scale_min = 2.0
+scale_max = 3.5
+color = Color(2, 1, 4, 1)
+alpha_curve = SubResource("CurveTexture_ricao")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sqcv0"]
+
+[sub_resource type="Animation" id="Animation_35j7r"]
+resource_name = "Beam Effect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vfx_beam/EnergyCylinder:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vfx_beam/SmallCylinder:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vfx_beam/EnergizedCover:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vfx_beam/Sparkles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_norgn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vfx_beam/EnergyCylinder:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vfx_beam/SmallCylinder:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vfx_beam/EnergizedCover:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vfx_beam/Sparkles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g8v6i"]
+_data = {
+"Beam Effect": SubResource("Animation_35j7r"),
+"RESET": SubResource("Animation_norgn")
+}
+
+[node name="World" type="Node3D"]
+
+[node name="vfx_beam" type="Node3D" parent="."]
+
+[node name="EnergyCylinder" type="GPUParticles3D" parent="vfx_beam"]
+material_override = SubResource("ShaderMaterial_b0m1n")
+emitting = false
+amount = 1
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5ecg3")
+draw_pass_1 = ExtResource("2_3qqey")
+
+[node name="SmallCylinder" type="GPUParticles3D" parent="vfx_beam"]
+material_override = SubResource("ShaderMaterial_4okji")
+amount = 1
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_k3bc7")
+draw_pass_1 = ExtResource("2_3qqey")
+
+[node name="EnergizedCover" type="GPUParticles3D" parent="vfx_beam"]
+material_override = SubResource("ShaderMaterial_u506v")
+amount = 1
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tmqlp")
+draw_pass_1 = ExtResource("5_0r460")
+
+[node name="Sparkles" type="GPUParticles3D" parent="vfx_beam"]
+material_override = SubResource("ShaderMaterial_k1edr")
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_w1m5y")
+draw_pass_1 = SubResource("QuadMesh_sqcv0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g8v6i")
+}

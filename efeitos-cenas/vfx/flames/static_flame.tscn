@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0gmhax7wb82a"]
+
+[ext_resource type="Shader" uid="uid://bwhql01pt1mwt" path="res://shaders/FireShaderTutorial_Flames.tres" id="1_u3iib"]
+[ext_resource type="Texture2D" uid="uid://bvyr2qy1twy0w" path="res://addons/GAP_Fire_Textures/Voronoi01.png" id="2_1wfpq"]
+[ext_resource type="Texture2D" uid="uid://cxgn0s2ombtgo" path="res://addons/GAP_Fire_Textures/Flame01.png" id="3_who3a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xv0u"]
+render_priority = 0
+shader = ExtResource("1_u3iib")
+shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
+shader_parameter/DissolveSpeed = Vector2(0, 0.2)
+shader_parameter/DissolveAmount = 0.5
+shader_parameter/MainTex = ExtResource("3_who3a")
+shader_parameter/DissolveTexture = ExtResource("2_1wfpq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7im4h"]
+gravity = Vector3(0, 0, 0)
+color = Color(4, 1.25, 0.6, 0.8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wac3w"]
+
+[node name="StaticFlame" type="GPUParticles3D"]
+material_override = SubResource("ShaderMaterial_4xv0u")
+amount = 1
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_7im4h")
+draw_pass_1 = SubResource("QuadMesh_wac3w")

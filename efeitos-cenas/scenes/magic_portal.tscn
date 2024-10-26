@@ -1,0 +1,88 @@
+[gd_scene load_steps=16 format=3 uid="uid://d0inyap2e7skj"]
+
+[ext_resource type="Shader" uid="uid://vwv1wxskjoqo" path="res://shaders/s_portal_shader.tres" id="1_ua60y"]
+[ext_resource type="Texture2D" uid="uid://coufxdq4k1ids" path="res://addons/LeLu_PortalEffect/T_VFX_lelu1_tiled.png" id="2_1pa38"]
+[ext_resource type="Material" uid="uid://43m6q8x625o1" path="res://addons/LeLu_PortalEffect/m_vortex_border_material.tres" id="3_dtmpl"]
+[ext_resource type="Shader" path="res://shaders/s_cutoff_shader.gdshader" id="4_r8kws"]
+[ext_resource type="Script" path="res://scenes/sample_character_body.gd" id="5_63lsk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_he2ka"]
+render_priority = 0
+shader = ExtResource("4_r8kws")
+shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/cutplane = null
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0dxo6"]
+height = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65pm6"]
+render_priority = 0
+shader = ExtResource("1_ua60y")
+shader_parameter/ColorIntensity = 7.0
+shader_parameter/PortalColor = Color(0.0541289, 0.573281, 0.643142, 1)
+shader_parameter/PortalRevolutionSpeed = Vector2(0, 0)
+shader_parameter/PortalVortexTexture = ExtResource("2_1pa38")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rputp"]
+
+[sub_resource type="Curve" id="Curve_j1ssm"]
+max_value = 2.0
+_data = [Vector2(0.0147368, 0.0157359), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8pqt1"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wx6jo"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ueh22"]
+curve_x = SubResource("Curve_j1ssm")
+curve_y = SubResource("Curve_8pqt1")
+curve_z = SubResource("Curve_wx6jo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dbifb"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 1.1
+emission_ring_inner_radius = 1.1
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.2
+orbit_velocity_curve = SubResource("CurveXYZTexture_ueh22")
+radial_velocity_min = 0.199978
+radial_velocity_max = 0.499978
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_vp7wl"]
+size = 0.2
+
+[node name="Wolrd" type="Node3D"]
+
+[node name="SampleCharacterBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2619)
+material_override = SubResource("ShaderMaterial_he2ka")
+mesh = SubResource("CapsuleMesh_0dxo6")
+skeleton = NodePath("../Portal")
+script = ExtResource("5_63lsk")
+
+[node name="Portal" type="Node3D" parent="."]
+
+[node name="mirror" type="MeshInstance3D" parent="Portal"]
+unique_name_in_owner = true
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_65pm6")
+mesh = SubResource("QuadMesh_rputp")
+
+[node name="PortalVortexBorder" type="GPUParticles3D" parent="Portal"]
+material_override = ExtResource("3_dtmpl")
+amount = 150
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_dbifb")
+draw_pass_1 = SubResource("RibbonTrailMesh_vp7wl")

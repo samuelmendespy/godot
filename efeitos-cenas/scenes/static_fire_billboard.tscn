@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://wjgrrsurptm2"]
+
+[ext_resource type="PackedScene" uid="uid://d0gmhax7wb82a" path="res://vfx/flames/static_flame.tscn" id="1_aq25j"]
+[ext_resource type="PackedScene" uid="uid://c7ddlahapuxpv" path="res://vfx/flames/flames.tscn" id="2_bhowu"]
+[ext_resource type="Shader" uid="uid://1t2dw66bmet1" path="res://shaders/SimpleFlameParticles.tres" id="3_ie15i"]
+[ext_resource type="Texture2D" uid="uid://dho5jukycw3gr" path="res://addons/GAP_Fire_Textures/Flare00.PNG" id="4_fv7ic"]
+
+[sub_resource type="Gradient" id="Gradient_wgyr8"]
+offsets = PackedFloat32Array(0, 0.290828, 0.530201, 0.995526)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_col4n"]
+gradient = SubResource("Gradient_wgyr8")
+
+[sub_resource type="Curve" id="Curve_00gj7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.216292, 1), 0.0, 0.0, 0, 0, Vector2(0.921348, 0.11105), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_c2xfe"]
+curve = SubResource("Curve_00gj7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_drsvd"]
+emission_shape = 1
+emission_sphere_radius = 0.35
+angle_min = -360.0
+angle_max = 360.0
+gravity = Vector3(0, 5, 0)
+damping_min = 0.5
+damping_max = 1.0
+scale_min = 1.75
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_c2xfe")
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_col4n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnieg"]
+render_priority = 0
+shader = ExtResource("3_ie15i")
+shader_parameter/MainTex = ExtResource("4_fv7ic")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_444rj"]
+emission_shape = 1
+emission_sphere_radius = 0.6
+angle_min = 0.100011
+angle_max = 0.200011
+gravity = Vector3(0, 4, 0)
+scale_min = 0.1
+scale_max = 0.12
+color = Color(4, 1.25, 0.6, 0.8)
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_v6ohq"]
+
+[node name="World" type="Node3D"]
+
+[node name="vfx_fire" type="Node3D" parent="."]
+
+[node name="StaticFlame" parent="vfx_fire" instance=ExtResource("1_aq25j")]
+
+[node name="Flames" parent="vfx_fire" instance=ExtResource("2_bhowu")]
+
+[node name="Smoke" parent="vfx_fire" instance=ExtResource("2_bhowu")]
+sorting_offset = -1.0
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_drsvd")
+
+[node name="FloatingParticles" type="GPUParticles3D" parent="vfx_fire"]
+sorting_offset = 1.0
+material_override = SubResource("ShaderMaterial_mnieg")
+amount = 50
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_444rj")
+draw_pass_1 = SubResource("QuadMesh_v6ohq")
